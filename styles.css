@@ -182,8 +182,158 @@ html {
 #panel-main{
     width:100%;
     height: 60%;
-    background: rgba(0, 255, 210, 0.3);
+    /*background: rgba(0, 255, 210, 0.3);*/
 }
+#panel-main-top{
+    line-height: 32px;
+    font-size: 32px;
+    color: #ff0021;
+    text-transform: uppercase;
+    font-weight: 800;
+    text-align: left;
+    padding-left:5%;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+}
+#panel-main-top:before{
+    height:5px;
+    content:" ";
+    background: rgba(255, 0, 0, 0.3);
+    position: absolute;
+    bottom:0;
+    left:2%;
+    right:0;
+}
+
+#panel-main-battle{
+    margin-top:20px;
+    background: rgba(0,0,0,0.7);
+    overflow: hidden;
+    zoom: 0.7;
+}
+#panel-main-left{
+    text-align:left;
+    float: left;
+    display: inline-block;
+}
+
+#panel-main-right{
+
+}
+
+#panel-main-left .ships{
+    /* padding-left:50px; */
+}
+
+#panel-main-left .ship{
+    width:300px;
+    font-family: 'Roboto', sans-serif;
+    font-size:20px;
+    margin-top:10px;
+    font-weight:600;
+    position:relative;
+    margin-right: 5px;
+    left: 40px;
+    height: 50px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+#panel-main-left .ship.ship-escort{
+    background-color: rgba(5, 82, 57, 0.31);
+    left: 80px;
+}
+
+#panel-main-left .ship img{
+    width:50px;
+    height:50px;
+}
+
+#panel-main-left .ship .name{
+    display: inline-block;
+    position:absolute;
+    top:0;
+    left:55px;
+    right:50px;
+    text-transform:capitalize;
+    color:#c8e6ff;
+    line-height:24px;
+    height:24px;
+}
+#panel-main-left .ship .name:after{
+    position:absolute;
+    width:100%;
+    height:2px;
+    content: ' ';
+    background:linear-gradient(to right,#64fffe 50%,rgba(250,0,0,0.5 ) 60%);
+    bottom:0;
+    left:0;
+    right:0;
+}
+
+#panel-main-left .ship .name.married{
+    color:#f39cd5;
+}
+
+#panel-main-left .ship .lvl{
+    display: inline-block;
+    text-transform:uppercase;
+    color:#c8e6ff;
+    padding-left:50px;
+    position:absolute;
+    top:28px;
+    line-height:20px;
+}
+
+#panel-main-left .ship .lvl:before{
+    content:"lvl"
+}
+
+#panel-main-left .ship .type{
+    display: inline-block;
+    text-transform:uppercase;
+    color:#337bff;
+    position:absolute;
+    top:28px;
+    line-height:20px;
+    left:55px;
+}
+
+#panel-main-battle .refuel-box{
+    position:absolute;
+    right:0;
+    top:0;
+    vertical-align: middle;
+    color: #9b9b9b;
+}
+.ship-fuel{
+    height: 49%;
+    position:relative;
+    color:#0fd30f;
+}
+.ship-fuel:before,.ship-ammo:before{
+    position:absolute;
+    content:" ";
+    top:2px;
+    left:-20px;
+    width: 18px;
+    height: 18px;
+    background-position: center;
+    background-size:cover;
+}
+.ship-fuel:before{
+    background: url("./img/fuel.png") no-repeat;
+}
+.ship-ammo{
+    height: 49%;
+    position:relative;
+    color:orange;
+}
+.ship-ammo:before{
+    background: url("./img/ammo.png") no-repeat;
+}
+/*******************************/
+/*          panel-help         */
+/*******************************/
 
 #panel-help{
     width:100%;
