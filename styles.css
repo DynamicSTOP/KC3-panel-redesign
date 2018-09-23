@@ -1,0 +1,192 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+
+body {
+    text-align: center;
+}
+
+#box {
+    width: 719px;
+    height: 942px;
+    border: 1px solid black;
+    display: inline-block;
+    background: white;
+    position:relative;
+}
+
+html {
+    background: black;
+}
+#twitter,#twitter a{
+    position:absolute;
+    bottom:0;
+    right:0;
+    text-decoration:none;
+    font-family: 'Roboto', sans-serif;
+    font-size:14px;
+    font-weight:800
+}
+
+/*******************************/
+/*          panel              */
+/*******************************/
+#panel{
+    width:100%;
+    height:100%;
+    background: grey url("./img/background-custom.jpg") no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+}
+/*******************************/
+/*          panel top          */
+/*******************************/
+
+#panel-top{
+    font-family: 'Roboto', sans-serif;
+    width:100%;
+    height:10%;
+    /* background: rgba(255, 120, 0, 0.3); */
+    font-weight: 800;
+    text-align: left;
+}
+
+#panel-top-player, #panel-top-stats {
+    display:inline-block;
+    float:left;
+    margin: 10px;
+}
+
+#panel-top-teitoku{
+    line-height:20px;
+    font-size: 20px;
+    color: #715900;
+}
+
+#panel-top-teitoku-rank{
+    margin-right:10px;
+    text-transform: capitalize;
+}
+#panel-top-teitoku-name{color: black;}
+#panel-top-hq{
+    padding: 2px;
+    position:relative
+}
+#panel-top-hq:before {
+    content:'';
+    position:absolute;
+    width:100%;
+    height:2px;
+    background:linear-gradient(to right,green 50%,rgba(250,0,0,0.5 ) 60%);
+    top:0px;
+    left:0;
+}
+#panel-top-hq-points{
+    float: right;
+}
+#panel-top-comment{
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+    color: rgba(0,0,0,0.7);
+}
+
+#panel-top-stats{
+    float:right;
+}
+
+#stats-tl-ships{
+    position:relative;
+    margin-left:20px;
+    margin-right:20px;
+}
+#stats-tl-ships:before{
+    position:absolute;
+    background: url("./img/ship.png") no-repeat;
+    content:" ";
+    top:0;
+    left:-20px;
+    width: 19px;
+    height: 19px;
+    background-position: center;
+}
+#stats-tl-equip{
+    position:relative;
+    margin-left:20px;
+    margin-right:20px;
+}
+#stats-tl-equip:before{
+    position:absolute;
+    background: url("./img/gear.png") no-repeat;
+    content:" ";
+    top:0;
+    left:-20px;
+    width: 19px;
+    height: 19px;
+    background-position: center;
+}
+#stats-tl-buck{
+    position:relative;
+    margin-left:20px;
+}
+#stats-tl-buck:before{
+    position:absolute;
+    background: url("./img/bucket.png") no-repeat;
+    content:" ";
+    top:0;
+    left:-20px;
+    width: 19px;
+    height: 19px;
+    background-position: center;
+}
+#panel-top-stats-stock{
+    margin-top:10px;
+}
+#panel-top-stats-stock > span {
+    float:right;
+    width:35%;
+    text-align:right;
+}
+#stats-tl-fuel,#stats-tl-steel,#stats-tl-ammo,#stats-tl-baux{
+    position:relative;
+}
+#stats-tl-fuel:before,#stats-tl-steel:before,#stats-tl-ammo:before,#stats-tl-baux:before{
+    position:absolute;
+    content:" ";
+    top:0;
+    left:20px;
+    width: 18px;
+    height: 18px;
+    background-position: center;
+    background-size:cover;
+}
+#stats-tl-fuel:before{
+    background: url("./img/fuel.png") no-repeat;
+}
+#stats-tl-steel:before{
+    background: url("./img/steel.png") no-repeat;
+}
+#stats-tl-ammo:before{
+    background: url("./img/ammo.png") no-repeat;
+}
+#stats-tl-baux:before{
+    background: url("./img/bauxite.png") no-repeat;
+}
+/*******************************/
+/*          panel-main         */
+/*******************************/
+
+#panel-main{
+    width:100%;
+    height: 60%;
+    background: rgba(0, 255, 210, 0.3);
+}
+
+#panel-help{
+    width:100%;
+    height: 30%;
+    background: rgba(0, 6, 255, 0.3);
+}
