@@ -209,7 +209,7 @@ html {
     margin-top:20px;
     background: rgba(0,0,0,0.7);
     overflow: hidden;
-    zoom: 0.7;
+    /* zoom: 0.7; */
 }
 #panel-main-left{
     text-align:left;
@@ -229,7 +229,7 @@ html {
     width:300px;
     font-family: 'Roboto', sans-serif;
     font-size:20px;
-    margin-top:10px;
+    margin-top: 10px;
     font-weight:600;
     position:relative;
     margin-right: 5px;
@@ -241,11 +241,17 @@ html {
 #panel-main-left .ship.ship-escort{
     background-color: rgba(5, 82, 57, 0.31);
     left: 80px;
+    display: none;
 }
 
 #panel-main-left .ship img{
     width:50px;
     height:50px;
+}
+#panel-main-left .ship.high-morale img{
+    border:2px solid yellow;
+    border-radius:50%;
+    box-sizing:border-box;
 }
 
 #panel-main-left .ship .name{
@@ -305,10 +311,15 @@ html {
     vertical-align: middle;
     color: #9b9b9b;
 }
+.ship-fuel,.ship-ammo{
+    color:#0fd30f;
+}
+.ship-fuel.penalty,.ship-ammo.penalty{
+    color:orange;
+}
 .ship-fuel{
     height: 49%;
     position:relative;
-    color:#0fd30f;
 }
 .ship-fuel:before,.ship-ammo:before{
     position:absolute;
@@ -326,7 +337,6 @@ html {
 .ship-ammo{
     height: 49%;
     position:relative;
-    color:orange;
 }
 .ship-ammo:before{
     background: url("./img/ammo.png") no-repeat;
