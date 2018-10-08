@@ -228,7 +228,7 @@ html {
 }
 
 #panel-main-left .ship{
-    width:300px;
+    width: 300px;
     font-family: 'Roboto', sans-serif;
     font-size:20px;
     margin-top: 10px;
@@ -266,17 +266,18 @@ html {
     color:#c8e6ff;
     line-height:24px;
     height:24px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
-#panel-main-left .ship .name:after{
-    position:absolute;
-    width:100%;
+#panel-main-left .ship .exp{
+    position: absolute;
     height:2px;
     content: " ";
     background: var( --gradient );
-    /*background:linear-gradient(to right,#64fffe 50%,rgba(250,0,0,0.5 ) 60%);*/
-    bottom:0;
-    left:0;
-    right:0;
+    top: 24px;
+    left: 54px;
+    width: calc(100% + 50px + 18px - 54px - 50px);
 }
 
 #panel-main-left .ship .name.married{
@@ -313,6 +314,8 @@ html {
     top:0;
     vertical-align: middle;
     color: #9b9b9b;
+    width: 50px;
+    text-align: right;
 }
 .ship-fuel,.ship-ammo{
     color:#0fd30f;
@@ -328,7 +331,7 @@ html {
     position:absolute;
     content:" ";
     top:2px;
-    left:-20px;
+    right:-20px;
     width: 18px;
     height: 18px;
     background-position: center;

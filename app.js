@@ -43,7 +43,8 @@ Vue.component('panel-ship', {
     template:
     '<div class="ship ship-main" v-bind:class="extraIconClasses">' +
     '<img :src="shipImagePath">' +
-    '<div class="name" v-bind:class="extraNameClasses" v-bind:style="style">{{ ship.name }}</div>' +
+    '<div class="name" v-bind:class="extraNameClasses">{{ ship.name }}</div>' +
+    '<div class="exp" v-bind:style="style"></div>' +
     '<div class="type">{{ ship.type }}</div>' +
     '<div class="lvl">{{ ship.lvl }}</div>' +
     '<div class="refuel-box">' +
