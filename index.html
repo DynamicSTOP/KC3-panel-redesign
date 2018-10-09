@@ -6,68 +6,104 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <link rel="stylesheet" href="styles.css">
-  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 </head>
 
 <body>
 <div id="box">
     <div id="panel">
-        <div id="panel-top">
-            <!-- top left corner -->
-            <div id="panel-top-player">
-                <div id="panel-top-teitoku">
-                    <span id="panel-top-teitoku-rank">{{ commander.rank }}</span>
-                    <span id="panel-top-teitoku-name">{{ commander.name }}</span>
-                </div>
-                <div id="panel-top-hq">
-                    <span id="panel-top-hq-rank">HQ {{ commander.HQ.lvl }}</span>
-                    <span id="panel-top-hq-points">+{{ commander.HQ.points }}</span>
-                </div>
-                <div id="panel-top-comment">{{ commander.comment }}</div>
-            </div>
-            <!-- top right corner -->
-            <div id="panel-top-stats">
-                <div id="panel-top-stats-tl">
-                    <span id="stats-tl-ships">{{ slots.ship[0] }}/{{ slots.ship[1] }}</span>
-                    <span id="stats-tl-equip">{{ slots.equip[0] }}/{{ slots.equip[1] }}</span>
-                    <span id="stats-tl-buck">{{ storage.buckets }}</span>
-                </div>
-                <div id="panel-top-stats-stock">
-                    <span id="stats-tl-fuel">{{ storage.fuel }}</span>
-                    <span id="stats-tl-steel">{{ storage.steel }}</span>
-                    <br>
-                    <span id="stats-tl-ammo">{{ storage.ammo }}</span>
-                    <span id="stats-tl-baux">{{ storage.bauxite }}</span>
-                </div>
-            </div>
+        <panel-header :storage="storage" :slots="slots" :commander="commander"></panel-header>
+        <panel-main :fleets="fleets"></panel-main>
+        <div id="panel-help"></div>
+    </div>
+    <div id="twitter"><a href="https://twitter.com/tsekino0530" rel="noopener" target="_blank">https://twitter.com/tsekino0530</a>
+    </div>
+    <panel-options :options="options"></panel-options>
+</div>
+
+<script type="text/x-template" id="panel-options-template">
+    <div id="panel-options" :class="{hidden:hidden}" >
+        <div class="switch" v-on:click="hidden=!hidden">{{ hidden ? "&lt;" : "&gt;" }}</div>
+        <div class="mute"></div>
+    </div>
+</script>
+<script type="text/x-template" id="panel-main-template">
+    <div id="panel-main">
+        <div id="panel-main-top">
+            battle
         </div>
-        <div id="panel-main">
-            <div id="panel-main-top">
-                battle
-            </div>
-            <div id="panel-main-battle">
-              <div>
+
+        <div id="panel-main-battle">
+            <div>
                 <div id="panel-main-left">
-                   <div class="ships" >
-                       <panel-ship v-for="(ship, index) in fleets[0]"
-                                    v-bind:num="index"
-                                    v-bind:ship="ship"
-                                    v-bind:key="ship.id">
-                       </panel-ship>
-                   </div>
+                    <div class="ships">
+                        <panel-ship-battle v-for="(ship, index) in fleets[0]"
+                                           v-bind:num="index"
+                                           v-bind:ship="ship"
+                                           v-bind:key="ship.id">
+                        </panel-ship-battle>
+                    </div>
                 </div>
                 <div id="panel-main-right">
 
                 </div>
-              </div>
             </div>
         </div>
-        <div id="panel-help"></div>
     </div>
-    <div id="twitter"><a href="https://twitter.com/tsekino0530" rel="noopener" target="_blank">https://twitter.com/tsekino0530</a></div>
-</div>
-
+</script>
+<script type="text/x-template" id="panel-header-template">
+    <div id="panel-top">
+        <div id="panel-top-player">
+            <div id="panel-top-teitoku">
+                <span id="panel-top-teitoku-rank">{{ commander.rank }}</span>
+                <span id="panel-top-teitoku-name">{{ commander.name }}</span>
+            </div>
+            <div id="panel-top-hq">
+                <span id="panel-top-hq-rank">HQ {{ commander.HQ.lvl }}</span>
+                <span id="panel-top-hq-points">+{{ commander.HQ.points }}</span>
+            </div>
+            <div id="panel-top-comment">{{ commander.comment }}</div>
+        </div>
+        <div id="panel-top-stats">
+            <div id="panel-top-stats-tl">
+                <span id="stats-tl-ships">{{ slots.ship[0] }}/{{ slots.ship[1] }}</span>
+                <span id="stats-tl-equip">{{ slots.equip[0] }}/{{ slots.equip[1] }}</span>
+                <span id="stats-tl-buck">{{ storage.buckets }}</span>
+            </div>
+            <div id="panel-top-stats-stock">
+                <span id="stats-tl-fuel">{{ storage.fuel }}</span>
+                <span id="stats-tl-steel">{{ storage.steel }}</span>
+                <br>
+                <span id="stats-tl-ammo">{{ storage.ammo }}</span>
+                <span id="stats-tl-baux">{{ storage.bauxite }}</span>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/x-template" id="panel-ship-battle-template">
+    <div class="ship ship-main" :class="extraIconClasses">
+        <img :src="shipImagePath">
+        <div class="name" :class="extraNameClasses">{{ ship.name }}</div>
+        <div class="refuel-box">
+            <div class="ship-fuel" :class="extraFuelClasses">{{ fuelPercent }}%</div>
+            <div class="ship-ammo" :class="extraAmmoClasses">{{ ammoPercent }}%</div>
+        </div>
+    </div>
+</script>
+<script type="text/x-template" id="panel-ship-template">
+    <div class="ship ship-main" v-bind:class="extraIconClasses">
+        <img :src="shipImagePath">
+        <div class="name" :class="extraNameClasses">{{ ship.name }}</div>
+        <div class="exp" :style="style"></div>
+        <div class="type">{{ ship.type }}</div>
+        <div class="lvl">{{ ship.lvl }}</div>
+        <div class="refuel-box">
+            <div class="ship-fuel" :class="extraFuelClasses">{{ fuelPercent }}%</div>
+            <div class="ship-ammo" :class="extraAmmoClasses">{{ ammoPercent }}%</div>
+        </div>
+    </div>
+</script>
 <script src="app.js"></script>
 </body>
 </html>

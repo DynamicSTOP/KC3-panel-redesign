@@ -1,3 +1,56 @@
+Vue.component('panel-ship-battle', {
+    props: ['ship', 'num'],
+    computed: {
+        shipImagePath() {
+            return `./img/ships/${this.ship.masterId}.png`;
+        },
+        fuelPercent() {
+            return Math.floor(this.ship.fuel[0] / this.ship.fuel[1] * 100);
+        },
+        ammoPercent() {
+            return Math.floor(this.ship.ammo[0] / this.ship.ammo[1] * 100);
+        },
+        expPercent() {
+
+        },
+        extraIconClasses() {
+            let extra = "";
+            if (this.ship.morale > 49) extra += "high-morale";
+            return extra;
+        },
+        extraNameClasses() {
+            let extra = "";
+            if (this.ship.lvl > 99) extra += "married";
+            return extra;
+        },
+        extraFuelClasses() {
+            let extra = "";
+            if (this.ship.fuel[0] / this.ship.fuel[1] <= 0.6) extra += "penalty";
+            return extra;
+        },
+        extraAmmoClasses() {
+            let extra = "";
+            if (this.ship.ammo[0] / this.ship.ammo[1] <= 0.6) extra += "penalty";
+            return extra;
+        },
+        /*background:*/
+        style() {
+            let start = this.ship.exp[0], end = start;
+            if (start < 90) end += 10;
+            return `--gradient: linear-gradient(to right,#64fffe ${start}%,rgba(250,0,0,0.5 ) ${end}%);`
+        }
+    },
+    template: "#panel-ship-battle-template"
+
+});
+Vue.component('panel-header', {
+    props: ['commander', 'storage', 'slots'],
+    template: "#panel-header-template"
+});
+Vue.component('panel-main', {
+    props: ["fleets"],
+    template: "#panel-main-template"
+});
 Vue.component('panel-ship', {
     props: ['ship', 'num'],
     computed: {
@@ -18,42 +71,37 @@ Vue.component('panel-ship', {
             if (this.ship.morale > 49) extra += "high-morale";
             return extra;
         },
-        extraNameClasses(){
+        extraNameClasses() {
             let extra = "";
             if (this.ship.lvl > 99) extra += "married";
             return extra;
         },
-        extraFuelClasses(){
+        extraFuelClasses() {
             let extra = "";
             if (this.ship.fuel[0] / this.ship.fuel[1] <= 0.6) extra += "penalty";
             return extra;
         },
-        extraAmmoClasses(){
+        extraAmmoClasses() {
             let extra = "";
             if (this.ship.ammo[0] / this.ship.ammo[1] <= 0.6) extra += "penalty";
             return extra;
         },
         /*background:*/
-        style(){
+        style() {
             let start = this.ship.exp[0], end = start;
             if (start < 90) end += 10;
             return `--gradient: linear-gradient(to right,#64fffe ${start}%,rgba(250,0,0,0.5 ) ${end}%);`
         }
     },
-    template:
-    '<div class="ship ship-main" v-bind:class="extraIconClasses">' +
-    '<img :src="shipImagePath">' +
-    '<div class="name" v-bind:class="extraNameClasses">{{ ship.name }}</div>' +
-    '<div class="exp" v-bind:style="style"></div>' +
-    '<div class="type">{{ ship.type }}</div>' +
-    '<div class="lvl">{{ ship.lvl }}</div>' +
-    '<div class="refuel-box">' +
-    '<div class="ship-fuel" v-bind:class="extraFuelClasses">{{ fuelPercent }}%</div>' +
-    '<div class="ship-ammo" v-bind:class="extraAmmoClasses">{{ ammoPercent }}%</div>' +
-    '</div>' +
-    '</div>'
+    template: "#panel-ship-template"
 });
-
+Vue.component('panel-options', {
+    props: ['options'],
+    data: function() {
+        return {hidden: true};
+    },
+    template: "#panel-options-template",
+});
 new Vue({
     el: '#box',
     data: {
@@ -93,7 +141,7 @@ new Vue({
                     fuel: [10, 20],
                     ammo: [20, 25],
                     morale: 40,
-                    exp:[30,100]
+                    exp: [30, 100]
                 },
                 {
                     id: 600,
@@ -104,7 +152,7 @@ new Vue({
                     fuel: [10, 20],
                     ammo: [20, 25],
                     morale: 20,
-                    exp:[85,100]
+                    exp: [85, 100]
                 },
                 {
                     id: 700,
@@ -115,7 +163,7 @@ new Vue({
                     fuel: [10, 40],
                     ammo: [20, 50],
                     morale: 70,
-                    exp:[60,100]
+                    exp: [60, 100]
                 },
                 {
                     id: 800,
@@ -126,7 +174,7 @@ new Vue({
                     fuel: [30, 30],
                     ammo: [35, 35],
                     morale: 70,
-                    exp:[97,100]
+                    exp: [97, 100]
                 },
                 {
                     id: 900,
@@ -137,7 +185,7 @@ new Vue({
                     fuel: [40, 60],
                     ammo: [50, 55],
                     morale: 70,
-                    exp:[50,100]
+                    exp: [50, 100]
                 },
                 {
                     id: 1000,
@@ -148,10 +196,13 @@ new Vue({
                     fuel: [10, 20],
                     ammo: [20, 25],
                     morale: 70,
-                    exp:[20,100]
+                    exp: [20, 100]
                 }
             ]
-        ]
+        ],
+        options:{
+            mute:false
+        }
 
     }
 });
