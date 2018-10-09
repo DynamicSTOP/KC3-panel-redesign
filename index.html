@@ -87,7 +87,7 @@
         <div class="name" :class="extraNameClasses">{{ ship.name }}</div>
         <div class="refuel-box">
             <div class="ship-fuel" :class="extraFuelClasses"></div>
-            <div class="ship-ammo" :class="extraAmmoClasses" :title="ship.ammo[0]+'/'+ship.ammo[1]"></div>
+            <div class="ship-ammo" :class="extraAmmoClasses" :title="ship.ammo[0]+'/'+ship.ammo[1]+'  '+Math.floor(ship.ammo[0]/ship.ammo[1]*100)+'%'"></div>
         </div>
     </div>
 </script>
