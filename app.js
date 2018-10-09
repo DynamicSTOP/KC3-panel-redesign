@@ -14,9 +14,9 @@ Vue.component('panel-ship-battle', {
 
         },
         extraIconClasses() {
-            let extra = "";
+            let extra = this.extraHPClasses + " " ;
             if (this.ship.morale > 49) extra += "high-morale";
-            return extra;
+            return extra.trim();
         },
         extraNameClasses() {
             let extra = "";
@@ -35,6 +35,13 @@ Vue.component('panel-ship-battle', {
             if (this.ship.ammo[0] / this.ship.ammo[1] >= 0.4) return "ammo-40";
             if (this.ship.ammo[0] / this.ship.ammo[1] >= 0.2) return "ammo-20";
             return "ammo-0";
+        },
+        extraHPClasses(){
+            if (this.ship.hp[0] / this.ship.hp[1] > 0.75) return "";
+            if (this.ship.hp[0] / this.ship.hp[1] > 0.5) return "hp-shouha";
+            if (this.ship.hp[0] / this.ship.hp[1] > 0.25) return "hp-chuha";
+            if (this.ship.hp[0] / this.ship.hp[1] > 0) return "hp-taiha";
+            if (this.ship.hp[0] === 0) return "hp-your-f____d-boooy";
         },
         /*background:*/
         style() {
@@ -144,7 +151,8 @@ new Vue({
                     fuel: [10, 20],
                     ammo: [100, 100],
                     morale: 40,
-                    exp: [30, 100]
+                    exp: [30, 100],
+                    hp:[100,100]
                 },
                 {
                     id: 600,
@@ -155,7 +163,8 @@ new Vue({
                     fuel: [10, 20],
                     ammo: [80, 100],
                     morale: 20,
-                    exp: [85, 100]
+                    exp: [85, 100],
+                    hp:[75,100]
                 },
                 {
                     id: 700,
@@ -166,7 +175,8 @@ new Vue({
                     fuel: [10, 40],
                     ammo: [60, 100],
                     morale: 70,
-                    exp: [60, 100]
+                    exp: [60, 100],
+                    hp:[50,100]
                 },
                 {
                     id: 800,
@@ -177,7 +187,8 @@ new Vue({
                     fuel: [30, 30],
                     ammo: [40, 100],
                     morale: 70,
-                    exp: [97, 100]
+                    exp: [97, 100],
+                    hp:[25,100]
                 },
                 {
                     id: 900,
@@ -188,7 +199,8 @@ new Vue({
                     fuel: [40, 60],
                     ammo: [20, 100],
                     morale: 70,
-                    exp: [50, 100]
+                    exp: [50, 100],
+                    hp:[100,100]
                 },
                 {
                     id: 1000,
@@ -199,7 +211,8 @@ new Vue({
                     fuel: [10, 20],
                     ammo: [0, 25],
                     morale: 70,
-                    exp: [20, 100]
+                    exp: [20, 100],
+                    hp:[100,100]
                 }
             ]
         ],

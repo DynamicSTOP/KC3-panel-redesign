@@ -23,7 +23,7 @@
 </div>
 
 <script type="text/x-template" id="panel-options-template">
-    <div id="panel-options" :class="{hidden:hidden}" >
+    <div id="panel-options" :class="{hidden:hidden}">
         <div class="switch" v-on:click="hidden=!hidden">{{ hidden ? "&lt;" : "&gt;" }}</div>
         <div class="mute"></div>
     </div>
@@ -87,8 +87,10 @@
         <div class="name" :class="extraNameClasses">{{ ship.name }}</div>
         <div class="refuel-box">
             <div class="ship-fuel" :class="extraFuelClasses"></div>
-            <div class="ship-ammo" :class="extraAmmoClasses" :title="ship.ammo[0]+'/'+ship.ammo[1]+'  '+Math.floor(ship.ammo[0]/ship.ammo[1]*100)+'%'"></div>
+            <div class="ship-ammo" :class="extraAmmoClasses"
+                 :title="ship.ammo[0]+'/'+ship.ammo[1]+'  '+Math.floor(ship.ammo[0]/ship.ammo[1]*100)+'%'"></div>
         </div>
+        <div class="ship-hp" :class="extraHPClasses">{{ ship.hp[0] }}/{{ ship.hp[1] }}</div>
     </div>
 </script>
 <script type="text/x-template" id="panel-ship-template">

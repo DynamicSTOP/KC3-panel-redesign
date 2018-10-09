@@ -245,13 +245,9 @@ html {
     display: inline-block;
 }
 
-#panel-main-right {
+#panel-main-right {}
 
-}
-
-#panel-main-left .ships {
-    /* padding-left:50px; */
-}
+#panel-main-left .ships {}
 
 #panel-main-left .ship {
     width: 270px;
@@ -265,6 +261,24 @@ html {
     height: 50px;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
+}
+
+#panel-main-left .ship.hp-taiha{
+    background: rgba(255,0,0,0.3);
+}
+#panel-main-left .ship.hp-taiha:before {
+    content:" ";
+    position:absolute;
+    width: 40px;
+    height: 100%;
+    left: -40px;
+    top:0;
+    background:url("./img/Taiha.png") no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+#panel-main-left .ship.hp-chuha{
+    background: rgba(255, 165, 0, 0.3);
 }
 
 #panel-main-left .ship.ship-escort {
@@ -350,35 +364,36 @@ html {
     display: inline-block;
     width: 18px;
     height: 18px;
-    position:relative;
+    position: relative;
 }
 
 .ship-fuel {
     background: url("./img/fuel.png") no-repeat;
 }
 
-
 .ship-ammo.ammo-100 {
     background: url("./img/shell.svg") no-repeat;
     background-size: contain;
     background-position-y: 50%;
 }
+
 .ship-ammo.ammo-80,
-.ship-ammo.ammo-60{
+.ship-ammo.ammo-60 {
     background: url("./img/shell_grey.svg") no-repeat;
     background-size: contain;
     background-position-y: 50%;
 }
+
 .ship-ammo.ammo-40,
-.ship-ammo.ammo-20{
+.ship-ammo.ammo-20 {
     background: url("./img/shell_red.svg") no-repeat;
     background-size: contain;
     background-position-y: 50%;
 }
 
-.ship-ammo:after{
+.ship-ammo:after {
     content: " ";
-    position:absolute;
+    position: absolute;
     width: 100%;
     height: 100%;
     left: 0;
@@ -388,19 +403,42 @@ html {
 }
 
 .ship-ammo.ammo-60:after,
-.ship-ammo.ammo-40:after{
+.ship-ammo.ammo-40:after {
     background: url("./img/shell_grey.svg") no-repeat;
     background-position-y: bottom;
     background-size: contain;
 }
+
 .ship-ammo.ammo-20:after,
-.ship-ammo.ammo-0:after{
+.ship-ammo.ammo-0:after {
     background: url("./img/shell_red.svg") no-repeat;
     background-position-y: bottom;
     background-size: contain;
 }
 
-    /*******************************/
+.ship-hp {
+    position: absolute;
+    bottom: 0;
+    left: 100px;
+    line-height: 22px;
+    font-size: 22px;
+    font-weight: 800;
+    color: black;
+    background: green;
+    border-radius: 5px;
+    padding: 0 5px;
+}
+
+.ship-hp.hp-shouha{
+    background-color:yellow;
+}
+.ship-hp.hp-chuha{
+    background-color:orange;
+}
+.ship-hp.hp-taiha{
+    background-color:red;
+}
+/*******************************/
 /*          panel-help         */
 /*******************************/
 
