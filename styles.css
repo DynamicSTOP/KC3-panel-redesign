@@ -339,52 +339,70 @@ html {
 
 #panel-main-battle .refuel-box {
     position: absolute;
-    right: 0;
-    top: 0;
     vertical-align: middle;
     color: #9b9b9b;
-    width: 50px;
     text-align: right;
+    bottom: 0;
+    left: 55px;
 }
 
 .ship-fuel, .ship-ammo {
-    color: #0fd30f;
-}
-
-.ship-fuel.penalty, .ship-ammo.penalty {
-    color: orange;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    position:relative;
 }
 
 .ship-fuel {
-    height: 49%;
-    position: relative;
-}
-
-.ship-fuel:before, .ship-ammo:before {
-    position: absolute;
-    content: " ";
-    top: 2px;
-    right: -20px;
-    width: 18px;
-    height: 18px;
-    background-position: center;
-    background-size: cover;
-}
-
-.ship-fuel:before {
     background: url("./img/fuel.png") no-repeat;
 }
 
-.ship-ammo {
-    height: 49%;
-    position: relative;
+
+.ship-ammo.ammo-100 {
+    background: url("./img/shell.svg") no-repeat;
+    background-size: contain;
+    background-position-y: 50%;
+}
+.ship-ammo.ammo-80 {
+    background: url("./img/shell_grey.svg") no-repeat;
+    background-size: contain;
+    background-position-y: 50%;
+}
+.ship-ammo.ammo-60 {
+    background: url("./img/shell_red.svg") no-repeat;
+    background-size: contain;
+    background-position-y: 50%;
+}
+.ship-ammo.ammo-40 {
+    background: url("./img/shell.svg") no-repeat;
+    background-size: contain;
+    background-position-y: bottom;
+}
+.ship-ammo.ammo-20 {
+    background: url("./img/shell_grey.svg") no-repeat;
+    background-size: contain;
+    background-position-y: bottom;
+}
+.ship-ammo.ammo-0 {
+    background: url("./img/shell_red.svg") no-repeat;
+    background-size: contain;
+    background-position-y: bottom;
+}
+.ship-ammo.ammo-100:after,
+.ship-ammo.ammo-80:after,
+.ship-ammo.ammo-60:after{
+    content: " ";
+    position:absolute;
+    background: url("./img/shell.svg") no-repeat;
+    background-position-y: bottom;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    left: 0;
 }
 
-.ship-ammo:before {
-    background: url("./img/ammo.png") no-repeat;
-}
 
-/*******************************/
+    /*******************************/
 /*          panel-help         */
 /*******************************/
 

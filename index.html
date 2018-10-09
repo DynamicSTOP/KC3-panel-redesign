@@ -86,8 +86,8 @@
         <img :src="shipImagePath">
         <div class="name" :class="extraNameClasses">{{ ship.name }}</div>
         <div class="refuel-box">
-            <div class="ship-fuel" :class="extraFuelClasses">{{ fuelPercent }}%</div>
-            <div class="ship-ammo" :class="extraAmmoClasses">{{ ammoPercent }}%</div>
+            <div class="ship-fuel" :class="extraFuelClasses"></div>
+            <div class="ship-ammo" :class="extraAmmoClasses" :title="ship.ammo[0]+'/'+ship.ammo[1]"></div>
         </div>
     </div>
 </script>

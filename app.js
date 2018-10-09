@@ -29,9 +29,12 @@ Vue.component('panel-ship-battle', {
             return extra;
         },
         extraAmmoClasses() {
-            let extra = "";
-            if (this.ship.ammo[0] / this.ship.ammo[1] <= 0.6) extra += "penalty";
-            return extra;
+            if (this.ship.ammo[0] === this.ship.ammo[1])      return "ammo-100";
+            if (this.ship.ammo[0] / this.ship.ammo[1] >= 0.8) return "ammo-80";
+            if (this.ship.ammo[0] / this.ship.ammo[1] >= 0.6) return "ammo-60";
+            if (this.ship.ammo[0] / this.ship.ammo[1] >= 0.4) return "ammo-40";
+            if (this.ship.ammo[0] / this.ship.ammo[1] >= 0.2) return "ammo-20";
+            return "ammo-0";
         },
         /*background:*/
         style() {
@@ -139,18 +142,18 @@ new Vue({
                     type: "dd",
                     lvl: 140,
                     fuel: [10, 20],
-                    ammo: [20, 25],
+                    ammo: [100, 100],
                     morale: 40,
                     exp: [30, 100]
                 },
                 {
                     id: 600,
-                    masterId: 330,
+                    masterId: 346,
                     name: "Teruzuki kai",
                     type: "dd",
                     lvl: 99,
                     fuel: [10, 20],
-                    ammo: [20, 25],
+                    ammo: [80, 100],
                     morale: 20,
                     exp: [85, 100]
                 },
@@ -161,7 +164,7 @@ new Vue({
                     type: "CV",
                     lvl: 99,
                     fuel: [10, 40],
-                    ammo: [20, 50],
+                    ammo: [60, 100],
                     morale: 70,
                     exp: [60, 100]
                 },
@@ -172,7 +175,7 @@ new Vue({
                     type: "ca",
                     lvl: 80,
                     fuel: [30, 30],
-                    ammo: [35, 35],
+                    ammo: [40, 100],
                     morale: 70,
                     exp: [97, 100]
                 },
@@ -183,7 +186,7 @@ new Vue({
                     type: "CV",
                     lvl: 70,
                     fuel: [40, 60],
-                    ammo: [50, 55],
+                    ammo: [20, 100],
                     morale: 70,
                     exp: [50, 100]
                 },
@@ -194,7 +197,7 @@ new Vue({
                     type: "dd",
                     lvl: 44,
                     fuel: [10, 20],
-                    ammo: [20, 25],
+                    ammo: [0, 25],
                     morale: 70,
                     exp: [20, 100]
                 }
