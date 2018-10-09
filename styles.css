@@ -363,44 +363,42 @@ html {
     background-size: contain;
     background-position-y: 50%;
 }
-.ship-ammo.ammo-80 {
+.ship-ammo.ammo-80,
+.ship-ammo.ammo-60{
     background: url("./img/shell_grey.svg") no-repeat;
     background-size: contain;
     background-position-y: 50%;
 }
-.ship-ammo.ammo-60 {
+.ship-ammo.ammo-40,
+.ship-ammo.ammo-20{
     background: url("./img/shell_red.svg") no-repeat;
     background-size: contain;
     background-position-y: 50%;
 }
-.ship-ammo.ammo-40 {
-    background: url("./img/shell.svg") no-repeat;
-    background-size: contain;
-    background-position-y: bottom;
-}
-.ship-ammo.ammo-20 {
-    background: url("./img/shell_grey.svg") no-repeat;
-    background-size: contain;
-    background-position-y: bottom;
-}
-.ship-ammo.ammo-0 {
-    background: url("./img/shell_red.svg") no-repeat;
-    background-size: contain;
-    background-position-y: bottom;
-}
-.ship-ammo.ammo-100:after,
-.ship-ammo.ammo-80:after,
-.ship-ammo.ammo-60:after{
+
+.ship-ammo:after{
     content: " ";
     position:absolute;
-    background: url("./img/shell.svg") no-repeat;
-    background-position-y: bottom;
-    background-size: contain;
     width: 100%;
     height: 100%;
     left: 0;
+    background: url("./img/shell.svg") no-repeat;
+    background-position-y: bottom;
+    background-size: contain;
 }
 
+.ship-ammo.ammo-60:after,
+.ship-ammo.ammo-40:after{
+    background: url("./img/shell_grey.svg") no-repeat;
+    background-position-y: bottom;
+    background-size: contain;
+}
+.ship-ammo.ammo-20:after,
+.ship-ammo.ammo-0:after{
+    background: url("./img/shell_red.svg") no-repeat;
+    background-position-y: bottom;
+    background-size: contain;
+}
 
     /*******************************/
 /*          panel-help         */
