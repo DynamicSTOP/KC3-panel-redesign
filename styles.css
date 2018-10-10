@@ -221,7 +221,6 @@ html {
 #panel-main-top {
     line-height: 32px;
     font-size: 32px;
-    color: #ff0021;
     text-transform: uppercase;
     font-weight: 800;
     text-align: left;
@@ -230,15 +229,60 @@ html {
     position: relative;
 }
 
+#panel-main-top > div {
+    margin-right: 50px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#panel-main-top .battle {
+    color: #ff0021;
+}
+
+#panel-main-top .fleet {
+    color: #00ab13;
+}
+
+#panel-main-top .port {
+    color: #030083;
+}
+
+#panel-main-top .quests {
+    color: #ff0088;
+}
+
+#panel-main :not(.active):not(:hover) {
+    color: grey;
+}
+
 #panel-main-top:before {
     height: 5px;
     content: " ";
-    background: rgba(255, 0, 0, 0.3);
     position: absolute;
     bottom: 0;
     left: 2%;
     right: 0;
 }
+#panel-main-top.battle:before {
+    background: rgba(255, 0, 0, 0.3);
+}
+
+#panel-main-top.fleet:before {
+    background: rgba(0, 171, 19, 0.3);
+}
+
+#panel-main-top.port:before {
+    background: rgba(3, 0, 141, 0.3);
+}
+
+#panel-main-top.quests:before {
+    background: rgba(255, 0, 136, 0.3);
+}
+#panel-main > div.hidden {
+    display: none;
+}
+/*****************************************/
+
 
 #panel-main-battle {
     margin-top: 20px;
@@ -423,7 +467,6 @@ html {
     background-position-x: right;
     background-size: contain;
 }
-
 
 .ship-ammo.ammo-100 {
     background: url("./img/shell.svg") no-repeat;

@@ -14,7 +14,7 @@
 <div id="box">
     <div id="panel">
         <panel-header :storage="storage" :slots="slots" :commander="commander"></panel-header>
-        <panel-main :fleets="fleets"></panel-main>
+        <panel-main :fleets="fleets" :current_main_panel="current_main_panel"></panel-main>
         <div id="panel-help"></div>
     </div>
     <div id="twitter"><a href="https://twitter.com/tsekino0530" rel="noopener" target="_blank">https://twitter.com/tsekino0530</a>
@@ -30,11 +30,8 @@
 </script>
 <script type="text/x-template" id="panel-main-template">
     <div id="panel-main">
-        <div id="panel-main-top">
-            battle
-        </div>
-
-        <div id="panel-main-battle">
+        <panel-main-top :current_main_panel="current_main_panel"></panel-main-top>
+        <div id="panel-main-battle" :class="{hidden:current_main_panel!=='battle'}">
             <div>
                 <div id="panel-main-left">
                     <div class="ships">
@@ -51,6 +48,15 @@
             </div>
         </div>
     </div>
+</script>
+<script type="text/x-template" id="panel-main-top-template">
+    <div id="panel-main-top" :class="current_main_panel">
+        <div class="battle" :class="{active:current_main_panel==='battle'}" @click="switchMainTab('battle')">battle</div>
+        <div class="fleet" :class="{active:current_main_panel==='fleet'}" @click="switchMainTab('fleet')">fleet</div>
+        <div class="port" :class="{active:current_main_panel==='port'}" @click="switchMainTab('port')">port</div>
+        <div class="quests" :class="{active:current_main_panel==='quests'}" @click="switchMainTab('quests')">quests</div>
+    </div>
+
 </script>
 <script type="text/x-template" id="panel-header-template">
     <div id="panel-top">

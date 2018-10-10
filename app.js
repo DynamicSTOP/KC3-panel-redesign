@@ -61,8 +61,17 @@ Vue.component('panel-header', {
     template: "#panel-header-template"
 });
 Vue.component('panel-main', {
-    props: ["fleets"],
+    props: ["fleets","current_main_panel"],
     template: "#panel-main-template"
+});
+Vue.component('panel-main-top', {
+    props: ["fleets","current_main_panel"],
+    template: "#panel-main-top-template",
+    methods:{
+        switchMainTab(name){
+            this.$root.$emit('switch_main_panel', name);
+        }
+    }
 });
 Vue.component('panel-ship', {
     props: ['ship', 'num'],
@@ -115,9 +124,10 @@ Vue.component('panel-options', {
     },
     template: "#panel-options-template",
 });
-new Vue({
+var vm = new Vue({
     el: '#box',
     data: {
+        current_main_panel:"battle",
         commander: {
             rank: "Admiral",
             name: "Tanaka-kun",
@@ -225,4 +235,8 @@ new Vue({
         }
 
     }
+});
+
+vm.$on('switch_main_panel', function (tabName) {
+    vm.$data.current_main_panel = tabName;
 });
