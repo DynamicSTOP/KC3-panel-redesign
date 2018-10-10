@@ -252,7 +252,7 @@ html {
 }
 
 #panel-main :not(.active):not(:hover) {
-    color: grey;
+    color: #a6a4a4;
 }
 
 #panel-main-top:before {
