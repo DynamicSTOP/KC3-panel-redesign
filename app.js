@@ -187,7 +187,7 @@ var vm = new Vue({
                     type: "CV",
                     lvl: 99,
                     fuel: [60, 100],
-                    ammo: [80, 100],
+                    ammo: [60, 100],
                     morale: 70,
                     exp: [60, 100],
                     hp:[50,100]

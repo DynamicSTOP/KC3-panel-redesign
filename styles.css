@@ -321,6 +321,12 @@ html {
     background: rgba(255, 0, 0, 0.2);
 }
 
+@keyframes animation-taiha {
+    0%   { width: 40px; left: -40px;}
+    50%  { width: 46px; left: -34px;}
+    100% { width: 40px; left: -40px;}
+}
+
 #panel-main-left .ship.hp-taiha:before {
     content: " ";
     position: absolute;
@@ -331,6 +337,7 @@ html {
     background: url("./img/Taiha.png") no-repeat;
     background-size: contain;
     background-position: center;
+    animation: animation-taiha 2s infinite;
 }
 
 #panel-main-left .ship.ship-escort {
@@ -529,7 +536,7 @@ html {
 }
 
 .ship-hp.hp-shouha .hp-block {
-    background: linear-gradient(to bottom, #fff172 0%, #ffc950 50%);
+    background: linear-gradient(to bottom, #fff172 0%, #b78a27 70%);
 }
 
 .ship-hp.hp-chuha .hp-block {
