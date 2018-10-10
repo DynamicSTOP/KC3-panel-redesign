@@ -304,7 +304,7 @@ html {
 }
 
 #panel-main-left .ship {
-    width: 270px;
+    width: 215px;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     margin-top: 10px;
@@ -323,7 +323,8 @@ html {
 
 @keyframes animation-taiha {
     0%   { width: 40px; left: -40px;}
-    50%  { width: 46px; left: -34px;}
+    80%  { width: 40px; left: -40px;}
+    90%  { width: 46px; left: -43px;}
     100% { width: 40px; left: -40px;}
 }
 
@@ -337,7 +338,7 @@ html {
     background: url("./img/Taiha.png") no-repeat;
     background-size: contain;
     background-position: center;
-    animation: animation-taiha 2s infinite;
+    animation: animation-taiha 5s infinite;
 }
 
 #panel-main-left .ship.ship-escort {
