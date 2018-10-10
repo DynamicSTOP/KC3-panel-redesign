@@ -244,7 +244,7 @@ html {
 }
 
 #panel-main-top .port {
-    color: #030083;
+    color: #5e5aff;
 }
 
 #panel-main-top .quests {
@@ -272,7 +272,7 @@ html {
 }
 
 #panel-main-top.port:before {
-    background: rgba(3, 0, 141, 0.3);
+    background: rgba(94, 90, 255, 0.3);
 }
 
 #panel-main-top.quests:before {
