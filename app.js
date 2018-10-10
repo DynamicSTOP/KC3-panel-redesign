@@ -10,8 +10,8 @@ Vue.component('panel-ship-battle', {
         ammoPercent() {
             return Math.floor(this.ship.ammo[0] / this.ship.ammo[1] * 100);
         },
-        expPercent() {
-
+        hpBarCount(){
+            return Math.floor((this.ship.hp[0] / this.ship.hp[1]) / 0.25);
         },
         extraIconClasses() {
             let extra = this.extraHPClasses + " " ;
@@ -24,9 +24,12 @@ Vue.component('panel-ship-battle', {
             return extra;
         },
         extraFuelClasses() {
-            let extra = "";
-            if (this.ship.fuel[0] / this.ship.fuel[1] <= 0.6) extra += "penalty";
-            return extra;
+            if (this.ship.fuel[0] === this.ship.fuel[1])      return "fuel-100";
+            if (this.ship.fuel[0] / this.ship.fuel[1] >= 0.8) return "fuel-80";
+            if (this.ship.fuel[0] / this.ship.fuel[1] >= 0.6) return "fuel-60";
+            if (this.ship.fuel[0] / this.ship.fuel[1] >= 0.4) return "fuel-40";
+            if (this.ship.fuel[0] / this.ship.fuel[1] >= 0.2) return "fuel-20";
+            return "fuel-0";
         },
         extraAmmoClasses() {
             if (this.ship.ammo[0] === this.ship.ammo[1])      return "ammo-100";
@@ -118,6 +121,7 @@ new Vue({
         commander: {
             rank: "Admiral",
             name: "Tanaka-kun",
+            censor: false,
             comment: "All your salt belongs to us!",
             HQ: {
                 lvl: 100,
@@ -148,7 +152,7 @@ new Vue({
                     name: "Hatsuzuki kai",
                     type: "dd",
                     lvl: 140,
-                    fuel: [10, 20],
+                    fuel: [100, 100],
                     ammo: [100, 100],
                     morale: 40,
                     exp: [30, 100],
@@ -160,7 +164,7 @@ new Vue({
                     name: "Teruzuki kai",
                     type: "dd",
                     lvl: 99,
-                    fuel: [10, 20],
+                    fuel: [80, 100],
                     ammo: [80, 100],
                     morale: 20,
                     exp: [85, 100],
@@ -172,8 +176,8 @@ new Vue({
                     name: "Graf Zeppelin Kai",
                     type: "CV",
                     lvl: 99,
-                    fuel: [10, 40],
-                    ammo: [60, 100],
+                    fuel: [60, 100],
+                    ammo: [80, 100],
                     morale: 70,
                     exp: [60, 100],
                     hp:[50,100]
@@ -184,7 +188,7 @@ new Vue({
                     name: "zara kai",
                     type: "ca",
                     lvl: 80,
-                    fuel: [30, 30],
+                    fuel: [40, 100],
                     ammo: [40, 100],
                     morale: 70,
                     exp: [97, 100],
@@ -196,7 +200,7 @@ new Vue({
                     name: "Aquilla kai",
                     type: "CV",
                     lvl: 70,
-                    fuel: [40, 60],
+                    fuel: [20, 100],
                     ammo: [20, 100],
                     morale: 70,
                     exp: [50, 100],
@@ -208,7 +212,7 @@ new Vue({
                     name: "minazuki kai",
                     type: "dd",
                     lvl: 44,
-                    fuel: [10, 20],
+                    fuel: [0, 20],
                     ammo: [0, 25],
                     morale: 70,
                     exp: [20, 100],

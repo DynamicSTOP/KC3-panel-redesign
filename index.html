@@ -57,7 +57,9 @@
         <div id="panel-top-player">
             <div id="panel-top-teitoku">
                 <span id="panel-top-teitoku-rank">{{ commander.rank }}</span>
-                <span id="panel-top-teitoku-name">{{ commander.name }}</span>
+                <span id="panel-top-teitoku-name" 
+                      :class="{censor:commander.censor}" 
+                      v-on:click="commander.censor=!commander.censor">{{ commander.censor ? "nope.jpg" : commander.name }}</span>
             </div>
             <div id="panel-top-hq">
                 <span id="panel-top-hq-rank">HQ {{ commander.HQ.lvl }}</span>
@@ -84,13 +86,14 @@
 <script type="text/x-template" id="panel-ship-battle-template">
     <div class="ship ship-main" :class="extraIconClasses">
         <img :src="shipImagePath">
-        <div class="name" :class="extraNameClasses">{{ ship.name }}</div>
+        <div class="ship-hp" :class="extraHPClasses" :title="ship.hp[0]+'/'+ship.hp[1]">
+            <div v-for="n in hpBarCount" class="hp-block"></div>
+        </div>
         <div class="refuel-box">
             <div class="ship-fuel" :class="extraFuelClasses"></div>
             <div class="ship-ammo" :class="extraAmmoClasses"
                  :title="ship.ammo[0]+'/'+ship.ammo[1]+'  '+Math.floor(ship.ammo[0]/ship.ammo[1]*100)+'%'"></div>
         </div>
-        <div class="ship-hp" :class="extraHPClasses">{{ ship.hp[0] }}/{{ ship.hp[1] }}</div>
     </div>
 </script>
 <script type="text/x-template" id="panel-ship-template">
