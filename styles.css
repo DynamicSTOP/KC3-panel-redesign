@@ -306,7 +306,6 @@ html {
 }
 
 #panel-main-left .ships {
-    margin-left: 40px;
 }
 
 #panel-main-right .enemies {
@@ -324,8 +323,7 @@ html {
 }
 
 #panel-main-left .ship {
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
+    padding-left: 40px;
 }
 
 #panel-main-right .enemy {
@@ -340,49 +338,70 @@ html {
 @keyframes animation-taiha {
     0% {
         width: 40px;
-        left: -40px;
+        left: 0;
     }
     80% {
         width: 40px;
-        left: -40px;
+        left: 0;
     }
     90% {
         width: 46px;
-        left: -43px;
+        left: -3px;
     }
     100% {
         width: 40px;
-        left: -40px;
+        left: 0;
     }
 }
 
-#panel-main-left .ship.hp-taiha:before {
+#panel-main-left .ship.hp-taiha:after {
     content: " ";
     position: absolute;
     width: 40px;
     height: 100%;
-    left: -40px;
     top: 0;
     background: url("./img/Taiha.png") no-repeat;
     background-size: contain;
     background-position: center;
     animation: animation-taiha 5s infinite;
+    left: 0;
 }
 
-#panel-main-left .ship img, #panel-main-right .enemy img {
+#panel-main-left .ship .shipIcon, #panel-main-right .enemy .enemyIcon {
     width: 50px;
     height: 50px;
+    background: var(--icon-path) no-repeat;
+    background-size: contain;
 }
-.sunk img{
+
+.enemyIcon{
+    float: right;
+}
+
+.sunk .enemyIcon{
     opacity: 0.3;
 }
+
+.enemy.sunk:after{
+    position:absolute;
+    bottom: 0;
+    right: 0;
+    width: 34px;
+    height: 29px;
+    content: " ";
+    background: url("./img/e_sunk.png") no-repeat;
+    background-position-x: right;
+    background-position-y: bottom;
+    background-size: contain;
+}
+
 
 .ship-hp {
     position: absolute;
     top: 0;
 }
 .ship .ship-hp {
-    left: 57px;
+    left: 97px;
 }
 .enemy .ship-hp{
     right: 57px;
@@ -415,7 +434,7 @@ html {
     background: linear-gradient(to bottom, #ff3938 0%, #b00005 50%);
 }
 
-#panel-main-left .ship.high-morale img {
+#panel-main-left .ship.high-morale .shipIcon {
     border: 2px solid yellow;
     border-radius: 50%;
     box-sizing: border-box;
@@ -480,7 +499,7 @@ html {
     color: #9b9b9b;
     text-align: right;
     bottom: 0;
-    left: 55px;
+    left: 95px;
 }
 
 .ship-fuel, .ship-ammo {

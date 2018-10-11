@@ -101,7 +101,7 @@
 
 <script type="text/x-template" id="panel-ship-battle-template">
     <div class="ship ship-main" :class="extraIconClasses">
-        <img :src="shipImagePath">
+        <div class="shipIcon" :style="styleIcon"></div>
         <div class="ship-hp" :class="extraHPClasses" :title="ship.hp[0]+'/'+ship.hp[1]">
             <div v-for="n in hpBarCount" class="hp-block"></div>
         </div>
@@ -115,8 +115,8 @@
 
 <script type="text/x-template" id="panel-enemy-battle-template">
     <div class="enemy enemy-main" :class="extraHPClasses">
-        <img :src="enemyImagePath">
-        <div class="ship-hp" :class="extraHPClasses" :title="enemy.hp[0]+'/'+enemy.hp[1]">
+        <div class="enemyIcon" :style="styleIcon"></div>
+        <div class="ship-hp" :class="extraHPClasses" :title="enemy.hp[0]+'/'+enemy.hp[1] +'   ' + Math.floor(enemy.hp[0]/enemy.hp[1]*100)+'%'">
             <div v-for="n in hpBarCount" class="hp-block"></div>
         </div>
     </div>

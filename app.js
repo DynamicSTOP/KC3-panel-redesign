@@ -4,6 +4,9 @@ Vue.component('panel-ship-battle', {
         shipImagePath() {
             return `./img/ships/${this.ship.masterId}.png`;
         },
+        styleIcon(){
+            return `--icon-path: url('${this.shipImagePath}');`;
+        },
         fuelPercent() {
             return Math.floor(this.ship.fuel[0] / this.ship.fuel[1] * 100);
         },
@@ -11,7 +14,9 @@ Vue.component('panel-ship-battle', {
             return Math.floor(this.ship.ammo[0] / this.ship.ammo[1] * 100);
         },
         hpBarCount(){
-            return Math.floor((this.ship.hp[0] / this.ship.hp[1]) / 0.25);
+            let bars = Math.ceil((this.ship.hp[0] / this.ship.hp[1]) / 0.25);
+            if (bars === 0 && this.ship.hp[0] > 0) return 1;
+            else return bars;
         },
         extraIconClasses() {
             let extra = this.extraHPClasses + " " ;
@@ -64,8 +69,13 @@ Vue.component('panel-enemy-battle', {
                 return `./img/ships/${this.enemy.masterId}.png`;
             return `./img/abyss/${this.enemy.id}.png`;
         },
+        styleIcon(){
+            return `--icon-path: url('${this.enemyImagePath}');`;
+        },
         hpBarCount(){
-            return Math.floor((this.enemy.hp[0] / this.enemy.hp[1]) / 0.25);
+            let bars = Math.ceil((this.enemy.hp[0] / this.enemy.hp[1]) / 0.25);
+            if (bars === 0 && this.enemy.hp[0] > 0) return 1;
+            else return bars;
         },
         extraNameClasses() {
             let extra = "";
@@ -259,43 +269,29 @@ var vm = new Vue({
         options:{
             mute:false
         },
-        enemies:[
-            {
-                id:589,
-                lvl:1,
-                hp:[100,100]
-            },
-            {
-                id:601,
-                lvl:2,
-                hp:[75,100]
-            },
-            {
-                id:807,
-                lvl:3,
-                hp:[50,100]
-            },
-            {
-                id:562,
-                lvl:4,
-                hp:[25,100]
-            },
-            {
-                id:810,
-                lvl:5,
-                hp:[0,100]
-            },
-            {
-                id:501,
-                lvl:6,
-                hp:[0,20]
-            }
-        ]
-
-
+        enemies:[]
     }
 });
 
 vm.$on('switch_main_panel', function (tabName) {
     vm.$data.current_main_panel = tabName;
 });
+
+
+/****************************************************/
+/****************************************************/
+/****************************************************/
+//just filling with random data
+const enemy_ids = [589, 601, 807, 562, 810, 501];
+const count = Math.ceil(Math.random()*5+1);
+let enemies = [];
+for(let i=0;i<count;i++){
+    let sunk = Math.random() > 0.6;
+    let hp_max = 20+Math.ceil(Math.random()*20);
+    enemies.push({
+        id: enemy_ids[Math.floor(Math.random() * 6)],
+        lvl: Math.ceil(Math.random() * 30),
+        hp:[sunk ? 0 : (Math.floor(Math.random() * (hp_max - 1)) + 1), hp_max]
+    });
+}
+vm.$data.enemies=enemies;
