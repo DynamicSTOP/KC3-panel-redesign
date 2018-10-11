@@ -14,7 +14,7 @@
 <div id="box">
     <div id="panel">
         <panel-header :storage="storage" :slots="slots" :commander="commander"></panel-header>
-        <panel-main :fleets="fleets" :current_main_panel="current_main_panel"></panel-main>
+        <panel-main :fleets="fleets" :enemies="enemies" :current_main_panel="current_main_panel"></panel-main>
         <div id="panel-help"></div>
     </div>
     <div id="twitter"><a href="https://twitter.com/tsekino0530" rel="noopener" target="_blank">https://twitter.com/tsekino0530</a>
@@ -28,6 +28,7 @@
         <div class="mute"></div>
     </div>
 </script>
+
 <script type="text/x-template" id="panel-main-template">
     <div id="panel-main">
         <panel-main-top :current_main_panel="current_main_panel"></panel-main-top>
@@ -36,19 +37,26 @@
                 <div id="panel-main-left">
                     <div class="ships">
                         <panel-ship-battle v-for="(ship, index) in fleets[0]"
-                                           v-bind:num="index"
-                                           v-bind:ship="ship"
-                                           v-bind:key="ship.id">
+                                           :num="index"
+                                           :ship="ship"
+                                           :key="ship.id">
                         </panel-ship-battle>
                     </div>
                 </div>
                 <div id="panel-main-right">
-
+                    <div class="enemies">
+                        <panel-enemy-battle v-for="(enemy, index) in enemies"
+                                           :num="index"
+                                           :enemy="enemy"
+                                           :key="index">
+                        </panel-enemy-battle>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </script>
+
 <script type="text/x-template" id="panel-main-top-template">
     <div id="panel-main-top" :class="current_main_panel">
         <div class="battle" :class="{active:current_main_panel==='battle'}" @click="switchMainTab('battle')">battle</div>
@@ -58,6 +66,7 @@
     </div>
 
 </script>
+
 <script type="text/x-template" id="panel-header-template">
     <div id="panel-top">
         <div id="panel-top-player">
@@ -89,6 +98,7 @@
         </div>
     </div>
 </script>
+
 <script type="text/x-template" id="panel-ship-battle-template">
     <div class="ship ship-main" :class="extraIconClasses">
         <img :src="shipImagePath">
@@ -102,6 +112,16 @@
         </div>
     </div>
 </script>
+
+<script type="text/x-template" id="panel-enemy-battle-template">
+    <div class="enemy enemy-main" :class="extraHPClasses">
+        <img :src="enemyImagePath">
+        <div class="ship-hp" :class="extraHPClasses" :title="enemy.hp[0]+'/'+enemy.hp[1]">
+            <div v-for="n in hpBarCount" class="hp-block"></div>
+        </div>
+    </div>
+</script>
+
 <script type="text/x-template" id="panel-ship-template">
     <div class="ship ship-main" v-bind:class="extraIconClasses">
         <img :src="shipImagePath">
@@ -115,6 +135,7 @@
         </div>
     </div>
 </script>
+
 <script src="app.js"></script>
 </body>
 </html>

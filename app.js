@@ -56,12 +56,38 @@ Vue.component('panel-ship-battle', {
     template: "#panel-ship-battle-template"
 
 });
+Vue.component('panel-enemy-battle', {
+    props: ['enemy', 'num'],
+    computed: {
+        enemyImagePath() {
+            if(this.enemy.masterId)
+                return `./img/ships/${this.enemy.masterId}.png`;
+            return `./img/abyss/${this.enemy.id}.png`;
+        },
+        hpBarCount(){
+            return Math.floor((this.enemy.hp[0] / this.enemy.hp[1]) / 0.25);
+        },
+        extraNameClasses() {
+            let extra = "";
+            if (this.enemy.lvl > 99) extra += "married";
+            return extra;
+        },
+        extraHPClasses(){
+            if (this.enemy.hp[0] / this.enemy.hp[1] > 0.75) return "";
+            if (this.enemy.hp[0] / this.enemy.hp[1] > 0.5) return "hp-shouha";
+            if (this.enemy.hp[0] / this.enemy.hp[1] > 0.25) return "hp-chuha";
+            if (this.enemy.hp[0] / this.enemy.hp[1] > 0) return "hp-taiha";
+            if (this.enemy.hp[0] <= 0) return "sunk";
+        },
+    },
+    template: "#panel-enemy-battle-template"
+});
 Vue.component('panel-header', {
     props: ['commander', 'storage', 'slots'],
     template: "#panel-header-template"
 });
 Vue.component('panel-main', {
-    props: ["fleets","current_main_panel"],
+    props: ["fleets","current_main_panel","enemies"],
     template: "#panel-main-template"
 });
 Vue.component('panel-main-top', {
@@ -232,7 +258,40 @@ var vm = new Vue({
         ],
         options:{
             mute:false
-        }
+        },
+        enemies:[
+            {
+                id:589,
+                lvl:1,
+                hp:[100,100]
+            },
+            {
+                id:601,
+                lvl:2,
+                hp:[75,100]
+            },
+            {
+                id:807,
+                lvl:3,
+                hp:[50,100]
+            },
+            {
+                id:562,
+                lvl:4,
+                hp:[25,100]
+            },
+            {
+                id:810,
+                lvl:5,
+                hp:[0,100]
+            },
+            {
+                id:501,
+                lvl:6,
+                hp:[0,20]
+            }
+        ]
+
 
     }
 });

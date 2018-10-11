@@ -263,6 +263,7 @@ html {
     left: 2%;
     right: 0;
 }
+
 #panel-main-top.battle:before {
     background: rgba(255, 0, 0, 0.3);
 }
@@ -278,11 +279,12 @@ html {
 #panel-main-top.quests:before {
     background: rgba(255, 0, 136, 0.3);
 }
+
 #panel-main > div.hidden {
     display: none;
 }
-/*****************************************/
 
+/*****************************************/
 
 #panel-main-battle {
     margin-top: 20px;
@@ -298,34 +300,60 @@ html {
 }
 
 #panel-main-right {
+    float: right;
+    display: inline-block;
+    text-align: right;
 }
 
 #panel-main-left .ships {
+    margin-left: 40px;
 }
 
-#panel-main-left .ship {
-    width: 215px;
+#panel-main-right .enemies {
+    margin-right: 40px;
+}
+
+#panel-main-left .ship, #panel-main-right .enemy {
+    width: 220px;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     margin-top: 10px;
     font-weight: 600;
     position: relative;
-    margin-right: 5px;
-    left: 40px;
     height: 50px;
+}
+
+#panel-main-left .ship {
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
 }
 
-#panel-main-left .ship.hp-taiha {
+#panel-main-right .enemy {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+#panel-main-left .ship.hp-taiha{
     background: rgba(255, 0, 0, 0.2);
 }
 
 @keyframes animation-taiha {
-    0%   { width: 40px; left: -40px;}
-    80%  { width: 40px; left: -40px;}
-    90%  { width: 46px; left: -43px;}
-    100% { width: 40px; left: -40px;}
+    0% {
+        width: 40px;
+        left: -40px;
+    }
+    80% {
+        width: 40px;
+        left: -40px;
+    }
+    90% {
+        width: 46px;
+        left: -43px;
+    }
+    100% {
+        width: 40px;
+        left: -40px;
+    }
 }
 
 #panel-main-left .ship.hp-taiha:before {
@@ -341,15 +369,50 @@ html {
     animation: animation-taiha 5s infinite;
 }
 
-#panel-main-left .ship.ship-escort {
-    background-color: rgba(5, 82, 57, 0.31);
-    left: 80px;
-    display: none;
-}
-
-#panel-main-left .ship img {
+#panel-main-left .ship img, #panel-main-right .enemy img {
     width: 50px;
     height: 50px;
+}
+.sunk img{
+    opacity: 0.3;
+}
+
+.ship-hp {
+    position: absolute;
+    top: 0;
+}
+.ship .ship-hp {
+    left: 57px;
+}
+.enemy .ship-hp{
+    right: 57px;
+}
+
+.ship-hp .hp-block {
+    width: 40px;
+    height: 10px;
+    background: linear-gradient(to bottom, #92fa00 0%, #2fa620 50%);
+    clip-path: polygon(0% 0%, 10% 50%, 0% 100%, 90% 100%, 100% 50%, 90% 0%);
+    display: inline-block;
+}
+.ship .ship-hp .hp-block{
+    margin-right: -2px;
+}
+.enemy .ship-hp .hp-block{
+    clip-path: polygon(10% 0%, 100% 0%, 90% 50%, 100% 100%, 10% 100%, 0% 50%);
+    margin-left: -2px;
+}
+
+.ship-hp.hp-shouha .hp-block {
+    background: linear-gradient(to bottom, #fff172 0%, #b78a27 70%);
+}
+
+.ship-hp.hp-chuha .hp-block {
+    background: linear-gradient(to bottom, #fab561 0%, #ff5e00 50%);
+}
+
+.ship-hp.hp-taiha .hp-block {
+    background: linear-gradient(to bottom, #ff3938 0%, #b00005 50%);
 }
 
 #panel-main-left .ship.high-morale img {
@@ -383,7 +446,7 @@ html {
     width: calc(100% + 50px + 18px - 54px - 50px);
 }
 
-#panel-main-left .ship .name.married {
+#panel-main-left .ship .name.married{
     color: #f39cd5;
 }
 
@@ -519,33 +582,6 @@ html {
     background: url("./img/shell_red.svg") no-repeat;
     background-position-y: bottom;
     background-size: contain;
-}
-
-.ship-hp {
-    position: absolute;
-    top: 0;
-    left: 57px;
-}
-
-.ship-hp .hp-block {
-    width: 40px;
-    height: 10px;
-    background: linear-gradient(to bottom, #92fa00 0%, #2fa620 50%);
-    clip-path: polygon(0% 0%, 10% 50%, 0% 100%, 90% 100%, 100% 50%, 90% 0%);
-    margin-right: -2px;
-    display: inline-block;
-}
-
-.ship-hp.hp-shouha .hp-block {
-    background: linear-gradient(to bottom, #fff172 0%, #b78a27 70%);
-}
-
-.ship-hp.hp-chuha .hp-block {
-    background: linear-gradient(to bottom, #fab561 0%, #ff5e00 50%);
-}
-
-.ship-hp.hp-taiha .hp-block {
-    background: linear-gradient(to bottom, #ff3938 0%, #b00005 50%);
 }
 
 /*******************************/
