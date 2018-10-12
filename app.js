@@ -51,6 +51,13 @@ Vue.component('panel-ship-battle', {
             if (this.ship.hp[0] / this.ship.hp[1] > 0) return "hp-taiha";
             if (this.ship.hp[0] === 0) return "hp-your-f____d-boooy";
         },
+        moraleClass(){
+            if (this.ship.morale >= 50) return "moraleHigh";
+            if (this.ship.morale >= 40) return "moraleNormal";
+            if (this.ship.morale >= 30) return "moraleLow";
+            // if (this.morale >= 20) return "moraleBad";
+            return "moraleBad";
+        },
         /*background:*/
         style() {
             let start = this.ship.exp[0], end = start;
@@ -248,7 +255,7 @@ var vm = new Vue({
                     lvl: 70,
                     fuel: [20, 100],
                     ammo: [20, 100],
-                    morale: 70,
+                    morale: 37,
                     exp: [50, 100],
                     hp:[100,100]
                 },
@@ -260,7 +267,7 @@ var vm = new Vue({
                     lvl: 44,
                     fuel: [0, 20],
                     ammo: [0, 25],
-                    morale: 70,
+                    morale: 0,
                     exp: [20, 100],
                     hp:[100,100]
                 }

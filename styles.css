@@ -291,6 +291,7 @@ html {
     background: rgba(0, 0, 0, 0.7);
     overflow: hidden;
     /* zoom: 0.7; */
+    padding: 20px 0;
 }
 
 #panel-main-left {
@@ -320,6 +321,9 @@ html {
     font-weight: 600;
     position: relative;
     height: 50px;
+}
+#panel-main-left .ship:first-child, #panel-main-right .enemy:first-child {
+    margin-top:0;
 }
 
 #panel-main-left .ship {
@@ -493,7 +497,7 @@ html {
     left: 55px;
 }
 
-#panel-main-battle .refuel-box {
+#panel-main-battle .status-box {
     position: absolute;
     vertical-align: middle;
     color: #9b9b9b;
@@ -502,11 +506,31 @@ html {
     left: 95px;
 }
 
-.ship-fuel, .ship-ammo {
+.ship-fuel, .ship-ammo, .ship-morale {
     display: inline-block;
     width: 18px;
     height: 18px;
     position: relative;
+}
+.moraleHigh{
+    background: url("./img/morale_high.svg") no-repeat;
+    background-size: contain;
+    background-position-y: 50%;
+}
+.moraleLow{
+    background: url("./img/morale_low.svg") no-repeat;
+    background-size: contain;
+    background-position-y: 50%;
+}
+.moraleBad{
+    background: url("./img/morale_bad.svg") no-repeat;
+    background-size: contain;
+    background-position-y: 50%;
+}
+.moraleNormal{
+    background: url("./img/morale_normal.svg") no-repeat;
+    background-size: contain;
+    background-position-y: 50%;
 }
 
 .ship-fuel.fuel-100 {
