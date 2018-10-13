@@ -101,6 +101,13 @@ Vue.component('panel-enemy-battle', {
 });
 Vue.component('panel-header', {
     props: ['commander', 'storage', 'slots'],
+    computed:{
+        expBar(){
+            let start = this.commander.HQ.exp, end = this.commander.HQ.next;
+            if (start < 90) end = start + 10;
+            return `--gradient: linear-gradient(to right, green ${start}%, rgba(250, 0, 0, 0.5) ${end}%);`
+        }
+    },
     template: "#panel-header-template"
 });
 Vue.component('panel-main', {

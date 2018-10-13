@@ -76,7 +76,7 @@
                       :class="{censor:commander.censor}" 
                       v-on:click="commander.censor=!commander.censor">{{ commander.censor ? "nope.jpg" : commander.name }}</span>
             </div>
-            <div id="panel-top-hq">
+            <div id="panel-top-hq" :style="expBar">
                 <span id="panel-top-hq-rank">HQ {{ commander.HQ.lvl }}</span>
                 <span id="panel-top-hq-points">+{{ commander.HQ.points }}</span>
             </div>
