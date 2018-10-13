@@ -383,11 +383,11 @@ html {
     float: right;
 }
 
-.sunk .enemyIcon{
+.hp-sunk .enemyIcon{
     opacity: 0.3;
 }
 
-.enemy.sunk:after{
+.enemy.hp-sunk:after{
     position:absolute;
     bottom: 0;
     right: 0;
@@ -418,13 +418,25 @@ html {
     background: linear-gradient(to bottom, #92fa00 0%, #2fa620 50%);
     clip-path: polygon(0% 0%, 10% 50%, 0% 100%, 90% 100%, 100% 50%, 90% 0%);
     display: inline-block;
+    position: relative;
 }
+
+.ship .ship-hp.hp-full .hp-block {
+    margin-right: -4px;
+    width: 42px;
+}
+
 .ship .ship-hp .hp-block{
     margin-right: -2px;
 }
 .enemy .ship-hp .hp-block{
     clip-path: polygon(10% 0%, 100% 0%, 90% 50%, 100% 100%, 10% 100%, 0% 50%);
     margin-left: -2px;
+}
+
+.enemy .ship-hp.hp-full .hp-block {
+    margin-left: -4px;
+    width: 42px;
 }
 
 .ship-hp.hp-shouha .hp-block {

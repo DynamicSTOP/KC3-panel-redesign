@@ -7,12 +7,6 @@ Vue.component('panel-ship-battle', {
         styleIcon() {
             return `--icon-path: url('${this.shipImagePath}');`;
         },
-        fuelPercent() {
-            return Math.floor(this.ship.fuel[0] / this.ship.fuel[1] * 100);
-        },
-        ammoPercent() {
-            return Math.floor(this.ship.ammo[0] / this.ship.ammo[1] * 100);
-        },
         hpBarCount() {
             let bars = Math.ceil((this.ship.hp[0] / this.ship.hp[1]) / 0.25);
             if (bars === 0 && this.ship.hp[0] > 0) return 1;
@@ -45,11 +39,12 @@ Vue.component('panel-ship-battle', {
             return "ammo-0";
         },
         extraHPClasses() {
+            if (this.ship.hp[0] === this.ship.hp[1]) return "hp-full";
             if (this.ship.hp[0] / this.ship.hp[1] > 0.75) return "";
             if (this.ship.hp[0] / this.ship.hp[1] > 0.5) return "hp-shouha";
             if (this.ship.hp[0] / this.ship.hp[1] > 0.25) return "hp-chuha";
             if (this.ship.hp[0] / this.ship.hp[1] > 0) return "hp-taiha";
-            if (this.ship.hp[0] === 0) return "hp-your-f____d-boooy";
+            if (this.ship.hp[0] === 0) return "hp-sunk";
         },
         moraleClass() {
             if (this.ship.morale >= 50) return "moraleHigh";
@@ -90,19 +85,20 @@ Vue.component('panel-enemy-battle', {
             return extra;
         },
         extraHPClasses() {
+            if (this.enemy.hp[0] === this.enemy.hp[1]) return "hp-full";
             if (this.enemy.hp[0] / this.enemy.hp[1] > 0.75) return "";
             if (this.enemy.hp[0] / this.enemy.hp[1] > 0.5) return "hp-shouha";
             if (this.enemy.hp[0] / this.enemy.hp[1] > 0.25) return "hp-chuha";
             if (this.enemy.hp[0] / this.enemy.hp[1] > 0) return "hp-taiha";
-            if (this.enemy.hp[0] <= 0) return "sunk";
+            if (this.enemy.hp[0] <= 0) return "hp-sunk";
         },
     },
     template: "#panel-enemy-battle-template"
 });
 Vue.component('panel-header', {
     props: ['commander', 'storage', 'slots'],
-    computed:{
-        expBar(){
+    computed: {
+        expBar() {
             let start = this.commander.HQ.exp, end = this.commander.HQ.next;
             if (start < 90) end = start + 10;
             return `--gradient: linear-gradient(to right, green ${start}%, rgba(250, 0, 0, 0.5) ${end}%);`
@@ -324,10 +320,17 @@ vm.$data.slots = {
     ship: [100 + 10 * slot_exp_num - Math.floor(Math.random() * 50), 100 + 10 * slot_exp_num],
     equip: [520 + 40 * slot_exp_num - Math.floor(Math.random() * 200), 520 + 40 * slot_exp_num]
 };
-
 vm.$data.commander.HQ = {
-    lvl: 10+Math.ceil(Math.random()*(120-10)),
-    exp: Math.floor(Math.random()*100),
+    lvl: 10 + Math.ceil(Math.random() * (120 - 10)),
+    exp: Math.floor(Math.random() * 100),
     next: 100,
-    points: Math.floor(Math.random()*500)/10
+    points: Math.floor(Math.random() * 500) / 10
 };
+
+vm.$data.fleets.map((f) => f.map((ship) => {
+    ship.morale = Math.floor(Math.random() * 100);
+    const hp_max = 20 + Math.ceil(Math.random() * 20);
+    ship.hp = [(Math.ceil(Math.random() * (hp_max - 1)) + 1), hp_max];
+    ship.fuel = [(Math.ceil(Math.random() * 30)), 30];
+    ship.ammo = [(Math.ceil(Math.random() * 30)), 30]
+}));

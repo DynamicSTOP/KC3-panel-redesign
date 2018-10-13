@@ -107,7 +107,8 @@
         </div>
         <div class="status-box">
             <div class="ship-morale" :class="moraleClass" :title="ship.morale"></div>
-            <div class="ship-fuel" :class="extraFuelClasses"></div>
+            <div class="ship-fuel" :class="extraFuelClasses"
+                 :title="ship.fuel[0]+'/'+ship.fuel[1]+'  '+Math.floor(ship.fuel[0]/ship.fuel[1]*100)+'%'"></div>
             <div class="ship-ammo" :class="extraAmmoClasses"
                  :title="ship.ammo[0]+'/'+ship.ammo[1]+'  '+Math.floor(ship.ammo[0]/ship.ammo[1]*100)+'%'"></div>
         </div>
