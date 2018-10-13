@@ -450,6 +450,9 @@ html {
 .ship-hp.hp-taiha .hp-block {
     background: linear-gradient(to bottom, #ff3938 0%, #b00005 50%);
 }
+.ship-hp .hp-block.hp-block-lost{
+    background: linear-gradient(to bottom, #d8d8d8 0%, #4e4e4e 50%);
+}
 
 #panel-main-left .ship.high-morale .shipIcon {
     border: 2px solid yellow;

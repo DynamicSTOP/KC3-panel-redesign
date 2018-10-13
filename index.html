@@ -102,8 +102,8 @@
 <script type="text/x-template" id="panel-ship-battle-template">
     <div class="ship ship-main" :class="extraIconClasses">
         <div class="shipIcon" :style="styleIcon"></div>
-        <div class="ship-hp" :class="extraHPClasses" :title="ship.hp.now+'/'+ship.hp.max">
-            <div v-for="n in hpBarCount" class="hp-block"></div>
+        <div class="ship-hp" :class="extraHPClasses" :title="ship.hp.now+'/'+ship.hp.max+'  lost '+ship.hp.lost+' hp'">
+            <div v-for="n in hpBarCount" class="hp-block"></div><div v-for="n in hpLostBarCount" class="hp-block hp-block-lost"></div>
         </div>
         <div class="status-box">
             <div class="ship-morale" :class="moraleClass" :title="ship.morale"></div>
@@ -120,20 +120,6 @@
         <div class="enemyIcon" :style="styleIcon"></div>
         <div class="ship-hp" :class="extraHPClasses" :title="enemy.hp.now+'/'+enemy.hp.max +'   ' + Math.floor(enemy.hp.now/enemy.hp.max*100)+'%'">
             <div v-for="n in hpBarCount" class="hp-block"></div>
-        </div>
-    </div>
-</script>
-
-<script type="text/x-template" id="panel-ship-template">
-    <div class="ship ship-main" v-bind:class="extraIconClasses">
-        <img :src="shipImagePath">
-        <div class="name" :class="extraNameClasses">{{ ship.name }}</div>
-        <div class="exp" :style="style"></div>
-        <div class="type">{{ ship.type }}</div>
-        <div class="lvl">{{ ship.lvl }}</div>
-        <div class="refuel-box">
-            <div class="ship-fuel" :class="extraFuelClasses">{{ fuelPercent }}%</div>
-            <div class="ship-ammo" :class="extraAmmoClasses">{{ ammoPercent }}%</div>
         </div>
     </div>
 </script>

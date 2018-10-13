@@ -12,6 +12,10 @@ Vue.component('panel-ship-battle', {
             if (bars === 0 && this.ship.hp.now > 0) return 1;
             else return bars;
         },
+        hpLostBarCount() {
+            let bars_was = Math.ceil(((this.ship.hp.now + this.ship.hp.lost) / this.ship.hp.max) / 0.25);
+            return bars_was - this.hpBarCount;
+        },
         extraIconClasses() {
             let extra = this.extraHPClasses + " ";
             if (this.ship.morale > 49) extra += "high-morale";
