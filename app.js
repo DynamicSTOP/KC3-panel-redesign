@@ -8,8 +8,8 @@ Vue.component('panel-ship-battle', {
             return `--icon-path: url('${this.shipImagePath}');`;
         },
         hpBarCount() {
-            let bars = Math.ceil((this.ship.hp[0] / this.ship.hp[1]) / 0.25);
-            if (bars === 0 && this.ship.hp[0] > 0) return 1;
+            let bars = Math.ceil((this.ship.hp.now / this.ship.hp.max) / 0.25);
+            if (bars === 0 && this.ship.hp.now > 0) return 1;
             else return bars;
         },
         extraIconClasses() {
@@ -39,12 +39,12 @@ Vue.component('panel-ship-battle', {
             return "ammo-0";
         },
         extraHPClasses() {
-            if (this.ship.hp[0] === this.ship.hp[1]) return "hp-full";
-            if (this.ship.hp[0] / this.ship.hp[1] > 0.75) return "";
-            if (this.ship.hp[0] / this.ship.hp[1] > 0.5) return "hp-shouha";
-            if (this.ship.hp[0] / this.ship.hp[1] > 0.25) return "hp-chuha";
-            if (this.ship.hp[0] / this.ship.hp[1] > 0) return "hp-taiha";
-            if (this.ship.hp[0] === 0) return "hp-sunk";
+            if (this.ship.hp.now === this.ship.hp.max) return "hp-full";
+            if (this.ship.hp.now / this.ship.hp.max > 0.75) return "";
+            if (this.ship.hp.now / this.ship.hp.max > 0.5) return "hp-shouha";
+            if (this.ship.hp.now / this.ship.hp.max > 0.25) return "hp-chuha";
+            if (this.ship.hp.now / this.ship.hp.max > 0) return "hp-taiha";
+            if (this.ship.hp.now === 0) return "hp-sunk";
         },
         moraleClass() {
             if (this.ship.morale >= 50) return "moraleHigh";
@@ -75,8 +75,8 @@ Vue.component('panel-enemy-battle', {
             return `--icon-path: url('${this.enemyImagePath}');`;
         },
         hpBarCount() {
-            let bars = Math.ceil((this.enemy.hp[0] / this.enemy.hp[1]) / 0.25);
-            if (bars === 0 && this.enemy.hp[0] > 0) return 1;
+            let bars = Math.ceil((this.enemy.hp.now / this.enemy.hp.max) / 0.25);
+            if (bars === 0 && this.enemy.hp.now > 0) return 1;
             else return bars;
         },
         extraNameClasses() {
@@ -85,12 +85,12 @@ Vue.component('panel-enemy-battle', {
             return extra;
         },
         extraHPClasses() {
-            if (this.enemy.hp[0] === this.enemy.hp[1]) return "hp-full";
-            if (this.enemy.hp[0] / this.enemy.hp[1] > 0.75) return "";
-            if (this.enemy.hp[0] / this.enemy.hp[1] > 0.5) return "hp-shouha";
-            if (this.enemy.hp[0] / this.enemy.hp[1] > 0.25) return "hp-chuha";
-            if (this.enemy.hp[0] / this.enemy.hp[1] > 0) return "hp-taiha";
-            if (this.enemy.hp[0] <= 0) return "hp-sunk";
+            if (this.enemy.hp.now === this.enemy.hp.max) return "hp-full";
+            if (this.enemy.hp.now / this.enemy.hp.max > 0.75) return "";
+            if (this.enemy.hp.now / this.enemy.hp.max > 0.5) return "hp-shouha";
+            if (this.enemy.hp.now / this.enemy.hp.max > 0.25) return "hp-chuha";
+            if (this.enemy.hp.now / this.enemy.hp.max > 0) return "hp-taiha";
+            if (this.enemy.hp.now <= 0) return "hp-sunk";
         },
     },
     template: "#panel-enemy-battle-template"
@@ -118,50 +118,6 @@ Vue.component('panel-main-top', {
             this.$root.$emit('switch_main_panel', name);
         }
     }
-});
-Vue.component('panel-ship', {
-    props: ['ship', 'num'],
-    computed: {
-        shipImagePath() {
-            return `./img/ships/${this.ship.masterId}.png`;
-        },
-        fuelPercent() {
-            return Math.floor(this.ship.fuel[0] / this.ship.fuel[1] * 100);
-        },
-        ammoPercent() {
-            return Math.floor(this.ship.ammo[0] / this.ship.ammo[1] * 100);
-        },
-        expPercent() {
-
-        },
-        extraIconClasses() {
-            let extra = "";
-            if (this.ship.morale > 49) extra += "high-morale";
-            return extra;
-        },
-        extraNameClasses() {
-            let extra = "";
-            if (this.ship.lvl > 99) extra += "married";
-            return extra;
-        },
-        extraFuelClasses() {
-            let extra = "";
-            if (this.ship.fuel[0] / this.ship.fuel[1] <= 0.6) extra += "penalty";
-            return extra;
-        },
-        extraAmmoClasses() {
-            let extra = "";
-            if (this.ship.ammo[0] / this.ship.ammo[1] <= 0.6) extra += "penalty";
-            return extra;
-        },
-        /*background:*/
-        style() {
-            let start = this.ship.exp[0], end = start;
-            if (start < 90) end += 10;
-            return `--gradient: linear-gradient(to right,#64fffe ${start}%,rgba(250,0,0,0.5 ) ${end}%);`
-        }
-    },
-    template: "#panel-ship-template"
 });
 Vue.component('panel-options', {
     props: ['options'],
@@ -212,7 +168,7 @@ var vm = new Vue({
                     ammo: [100, 100],
                     morale: 40,
                     exp: [30, 100],
-                    hp: [100, 100]
+                    hp: {now: 100, max: 100, lost: 0}
                 },
                 {
                     id: 600,
@@ -224,7 +180,7 @@ var vm = new Vue({
                     ammo: [80, 100],
                     morale: 20,
                     exp: [85, 100],
-                    hp: [75, 100]
+                    hp: {now: 100, max: 100, lost: 0}
                 },
                 {
                     id: 700,
@@ -236,7 +192,7 @@ var vm = new Vue({
                     ammo: [60, 100],
                     morale: 70,
                     exp: [60, 100],
-                    hp: [50, 100]
+                    hp: {now: 100, max: 100, lost: 0}
                 },
                 {
                     id: 800,
@@ -248,7 +204,7 @@ var vm = new Vue({
                     ammo: [40, 100],
                     morale: 70,
                     exp: [97, 100],
-                    hp: [25, 100]
+                    hp: {now: 100, max: 100, lost: 0}
                 },
                 {
                     id: 900,
@@ -260,7 +216,7 @@ var vm = new Vue({
                     ammo: [20, 100],
                     morale: 37,
                     exp: [50, 100],
-                    hp: [100, 100]
+                    hp: {now: 100, max: 100, lost: 0}
                 },
                 {
                     id: 1000,
@@ -272,7 +228,7 @@ var vm = new Vue({
                     ammo: [0, 25],
                     morale: 0,
                     exp: [20, 100],
-                    hp: [100, 100]
+                    hp: {now: 100, max: 100, lost: 0}
                 }
             ]
         ],
@@ -296,14 +252,19 @@ const enemy_ids = [589, 601, 807, 562, 810, 501];
 const count = Math.ceil(Math.random() * 5 + 1);
 let enemies = [];
 for (let i = 0; i < count; i++) {
-    let sunk = Math.random() > 0.6;
-    let hp_max = 20 + Math.ceil(Math.random() * 20);
-    enemies.push({
+    const sunk = Math.random() > 0.6;
+    const enemy = {
         id: enemy_ids[Math.floor(Math.random() * 6)],
         lvl: Math.ceil(Math.random() * 30),
-        hp: [sunk ? 0 : (Math.floor(Math.random() * (hp_max - 1)) + 1), hp_max]
-    });
+        hp: {
+            max: 20 + Math.ceil(Math.random() * 20)
+        }
+    };
+    enemy.hp.now = sunk ? 0 : (Math.floor(Math.random() * (enemy.hp.max - 1)) + 1);
+    enemies.push(enemy);
 }
+;
+
 vm.$data.enemies = enemies;
 
 vm.$data.storage = {
@@ -330,7 +291,12 @@ vm.$data.commander.HQ = {
 vm.$data.fleets.map((f) => f.map((ship) => {
     ship.morale = Math.floor(Math.random() * 100);
     const hp_max = 20 + Math.ceil(Math.random() * 20);
-    ship.hp = [(Math.ceil(Math.random() * (hp_max - 1)) + 1), hp_max];
+    const hp_now = Math.ceil(Math.random() * (hp_max - 1)) + 1;
+    ship.hp = {
+        max: hp_max,
+        now: hp_now,
+        lost: Math.floor(Math.random() * (hp_max - hp_now))
+    };
     ship.fuel = [(Math.ceil(Math.random() * 30)), 30];
     ship.ammo = [(Math.ceil(Math.random() * 30)), 30]
 }));

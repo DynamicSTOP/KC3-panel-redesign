@@ -76,7 +76,7 @@
                       :class="{censor:commander.censor}" 
                       v-on:click="commander.censor=!commander.censor">{{ commander.censor ? "nope.jpg" : commander.name }}</span>
             </div>
-            <div id="panel-top-hq" :style="expBar">
+            <div id="panel-top-hq" :style="expBar" :title="commander.HQ.exp+'/'+commander.HQ.next">
                 <span id="panel-top-hq-rank">HQ {{ commander.HQ.lvl }}</span>
                 <span id="panel-top-hq-points">+{{ commander.HQ.points }}</span>
             </div>
@@ -102,7 +102,7 @@
 <script type="text/x-template" id="panel-ship-battle-template">
     <div class="ship ship-main" :class="extraIconClasses">
         <div class="shipIcon" :style="styleIcon"></div>
-        <div class="ship-hp" :class="extraHPClasses" :title="ship.hp[0]+'/'+ship.hp[1]">
+        <div class="ship-hp" :class="extraHPClasses" :title="ship.hp.now+'/'+ship.hp.max">
             <div v-for="n in hpBarCount" class="hp-block"></div>
         </div>
         <div class="status-box">
@@ -118,7 +118,7 @@
 <script type="text/x-template" id="panel-enemy-battle-template">
     <div class="enemy enemy-main" :class="extraHPClasses">
         <div class="enemyIcon" :style="styleIcon"></div>
-        <div class="ship-hp" :class="extraHPClasses" :title="enemy.hp[0]+'/'+enemy.hp[1] +'   ' + Math.floor(enemy.hp[0]/enemy.hp[1]*100)+'%'">
+        <div class="ship-hp" :class="extraHPClasses" :title="enemy.hp.now+'/'+enemy.hp.max +'   ' + Math.floor(enemy.hp.now/enemy.hp.max*100)+'%'">
             <div v-for="n in hpBarCount" class="hp-block"></div>
         </div>
     </div>
