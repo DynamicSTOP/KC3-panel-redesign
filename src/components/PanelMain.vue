@@ -1,7 +1,7 @@
 <template>
     <div id="panel-main">
-        <panel-main-top :current_main_panel="current_main_panel"></panel-main-top>
-        <div id="panel-main-battle" :class="{hidden:current_main_panel!=='battle'}">
+        <panel-main-top></panel-main-top>
+        <div id="panel-main-battle" :class="{hidden:currentMainTab!=='battle'}">
             <div>
                 <div id="panel-main-left">
                     <div class="ships">
@@ -28,10 +28,13 @@
     import PanelMainTop from '@/components/PanelMainTop.vue';
     import PanelShipBattle from '@/components/PanelShipBattle.vue';
     import PanelEnemyBattle from '@/components/PanelEnemyBattle.vue';
+    import {mapGetters} from 'vuex'
 
     export default {
         name: 'PanelMain',
-        props: ['fleets', 'enemies', 'current_main_panel'],
+        computed: {
+            ...mapGetters(['currentMainTab', 'fleets', 'enemies'])
+        },
         components: {PanelMainTop, PanelEnemyBattle, PanelShipBattle}
     }
 </script>

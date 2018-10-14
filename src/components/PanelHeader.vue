@@ -31,10 +31,12 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex';
+
     export default {
         name: 'PanelHeader',
-        props: ['commander', 'storage', 'slots'],
         computed: {
+            ...mapGetters(['commander', 'storage', 'slots']),
             expBar() {
                 let start = this.commander.HQ.exp, end = this.commander.HQ.next;
                 if (start < 90) end = start + 10;

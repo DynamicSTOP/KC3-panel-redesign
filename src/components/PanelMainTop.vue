@@ -1,19 +1,23 @@
 <template>
-    <div id="panel-main-top" :class="current_main_panel">
-        <div class="battle" :class="{active:current_main_panel==='battle'}" @click="switchMainTab('battle')">battle</div>
-        <div class="fleet" :class="{active:current_main_panel==='fleet'}" @click="switchMainTab('fleet')">fleet</div>
-        <div class="port" :class="{active:current_main_panel==='port'}" @click="switchMainTab('port')">port</div>
-        <div class="quests" :class="{active:current_main_panel==='quests'}" @click="switchMainTab('quests')">quests</div>
+    <div id="panel-main-top" :class="currentMainTab">
+        <div class="battle" :class="{active:currentMainTab==='battle'}" @click="switchMainTab('battle')">battle</div>
+        <div class="fleet" :class="{active:currentMainTab==='fleet'}" @click="switchMainTab('fleet')">fleet</div>
+        <div class="port" :class="{active:currentMainTab==='port'}" @click="switchMainTab('port')">port</div>
+        <div class="quests" :class="{active:currentMainTab==='quests'}" @click="switchMainTab('quests')">quests</div>
     </div>
 </template>
 
 <script>
+    import {mapGetters} from 'vuex';
+
     export default {
         name: 'PanelMainTop',
-        props: ['current_main_panel'],
+        computed: {
+            ...mapGetters(['currentMainTab'])
+        },
         methods: {
             switchMainTab(name) {
-                this.$root.$emit('switch_main_panel', name);
+                this.$store.commit('switchMainTab', name);
             }
         }
     }

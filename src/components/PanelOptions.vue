@@ -1,14 +1,18 @@
 <template>
     <div id="panel-options" :class="{hidden:hidden}">
-      <div class="switch" v-on:click="hidden=!hidden">{{ hidden ? "&lt;" : "&gt;" }}</div>
-      <div class="mute"></div>
+        <div class="switch" v-on:click="hidden=!hidden">{{ hidden ? "&lt;" : "&gt;" }}</div>
+        <div class="mute"></div>
     </div>
 </template>
 
 <script>
+    import {mapGetters} from 'vuex';
+
     export default {
         name: 'PanelOptions',
-        props: ['options'],
+        computed: {
+            ...mapGetters(['options'])
+        },
         data: function () {
             return {hidden: true};
         }

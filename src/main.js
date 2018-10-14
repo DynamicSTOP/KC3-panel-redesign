@@ -5,11 +5,7 @@ import store from './store'
 
 Vue.config.productionTip = false;
 
-const vm = new Vue({
+new Vue({
   store,
   render: h => h(App)
 }).$mount('#box');
-
-vm.$on('switch_main_panel', function (tabName) {
-    vm.$data.current_main_panel = tabName;
-});
