@@ -1,0 +1,23 @@
+{
+  "name": "kc-panel",
+  "version": "1.0.0",
+  "description": "[https://dynamicstop.github.io/KC3-panel-redesign/](https://dynamicstop.github.io/KC3-panel-redesign/)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DynamicSTOP/KC3-panel-redesign.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DynamicSTOP/KC3-panel-redesign/issues"
+  },
+  "homepage": "https://github.com/DynamicSTOP/KC3-panel-redesign#readme",
+  "dependencies": {
+    "@vue/cli": "^3.0.5",
+    "@vue/cli-service": "^3.0.5"
+  }
+}

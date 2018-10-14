@@ -1,3 +1,7 @@
 .idea
 *.iml
 img/background-custom.jpg
+
+node_modules
+.env
+/*.png
