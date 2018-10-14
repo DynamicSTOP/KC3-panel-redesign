@@ -39,7 +39,7 @@ html {
   width: 100%;
   height: 100%;
   background-color: grey;
-  background-image: url("background-custom.jpg"), url("https://safebooru.donmai.us/data/__hatsuzuki_kantai_collection_drawn_by_sekino_takehiro__c6127f035a772bd3decbe2f07858d9ce.jpg");
+  background-image: url("/background-custom.jpg"), url("https://safebooru.donmai.us/data/__hatsuzuki_kantai_collection_drawn_by_sekino_takehiro__c6127f035a772bd3decbe2f07858d9ce.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -126,7 +126,7 @@ html {
 
 #stats-tl-ships:before {
   position: absolute;
-  background: url("../img/ship.png") no-repeat;
+  background: url("../assets/img/ship.png") no-repeat;
   content: " ";
   top: 0;
   left: -20px;
@@ -143,7 +143,7 @@ html {
 
 #stats-tl-equip:before {
   position: absolute;
-  background: url("../img/gear.png") no-repeat;
+  background: url("../assets/img/gear.png") no-repeat;
   content: " ";
   top: 0;
   left: -20px;
@@ -159,7 +159,7 @@ html {
 
 #stats-tl-buck:before {
   position: absolute;
-  background: url("../img/bucket.png") no-repeat;
+  background: url("../assets/img/bucket.png") no-repeat;
   content: " ";
   top: 0;
   left: -20px;
@@ -194,19 +194,19 @@ html {
 }
 
 #stats-tl-fuel:before {
-  background: url("../img/fuel.png") no-repeat;
+  background: url("../assets/img/fuel.png") no-repeat;
 }
 
 #stats-tl-steel:before {
-  background: url("../img/steel.png") no-repeat;
+  background: url("../assets/img/steel.png") no-repeat;
 }
 
 #stats-tl-ammo:before {
-  background: url("../img/ammo.png") no-repeat;
+  background: url("../assets/img/ammo.png") no-repeat;
 }
 
 #stats-tl-baux:before {
-  background: url("../img/bauxite.png") no-repeat;
+  background: url("../assets/img/bauxite.png") no-repeat;
 }
 
 /*******************************/
@@ -365,7 +365,7 @@ html {
   width: 40px;
   height: 100%;
   top: 0;
-  background: url("../img/Taiha.png") no-repeat;
+  background: url("../assets/img/Taiha.png") no-repeat;
   background-size: contain;
   background-position: center;
   animation: animation-taiha 5s infinite;
@@ -394,7 +394,7 @@ html {
   width: 34px;
   height: 29px;
   content: " ";
-  background: url("../img/e_sunk.png") no-repeat;
+  background: url("../assets/img/e_sunk.png") no-repeat;
   background-position-x: right;
   background-position-y: bottom;
   background-size: contain;
@@ -529,42 +529,42 @@ html {
   position: relative;
 }
 .moraleHigh{
-  background: url("../img/morale_high.svg") no-repeat;
+  background: url("../assets/img/morale_high.svg") no-repeat;
   background-size: contain;
   background-position-y: 50%;
 }
 .moraleLow{
-  background: url("../img/morale_low.svg") no-repeat;
+  background: url("../assets/img/morale_low.svg") no-repeat;
   background-size: contain;
   background-position-y: 50%;
 }
 .moraleBad{
-  background: url("../img/morale_bad.svg") no-repeat;
+  background: url("../assets/img/morale_bad.svg") no-repeat;
   background-size: contain;
   background-position-y: 50%;
 }
 .moraleNormal{
-  background: url("../img/morale_normal.svg") no-repeat;
+  background: url("../assets/img/morale_normal.svg") no-repeat;
   background-size: contain;
   background-position-y: 50%;
 }
 
 .ship-fuel.fuel-100 {
-  background: url("../img/fuel_barrel.svg") no-repeat;
+  background: url("../assets/img/fuel_barrel.svg") no-repeat;
   background-size: contain;
   background-position-y: 50%;
 }
 
 .ship-fuel.fuel-80,
 .ship-fuel.fuel-60 {
-  background: url("../img/fuel_barrel_grey.svg") no-repeat;
+  background: url("../assets/img/fuel_barrel_grey.svg") no-repeat;
   background-size: contain;
   background-position-y: 50%;
 }
 
 .ship-fuel.fuel-40,
 .ship-fuel.fuel-20 {
-  background: url("../img/fuel_barrel_red.svg") no-repeat;
+  background: url("../assets/img/fuel_barrel_red.svg") no-repeat;
   background-size: contain;
   background-position-y: 50%;
 }
@@ -576,7 +576,7 @@ html {
   height: 100%;
   left: 0;
   bottom: -1px;
-  background: url("../img/fuel_barrel.svg") no-repeat;
+  background: url("../assets/img/fuel_barrel.svg") no-repeat;
   background-position-x: right;
   background-position-y: bottom;
   background-size: contain;
@@ -584,7 +584,7 @@ html {
 
 .ship-fuel.fuel-60:after,
 .ship-fuel.fuel-40:after {
-  background: url("../img/fuel_barrel_grey.svg") no-repeat;
+  background: url("../assets/img/fuel_barrel_grey.svg") no-repeat;
   background-position-x: right;
   background-position-y: bottom;
   background-size: contain;
@@ -592,28 +592,28 @@ html {
 
 .ship-fuel.fuel-20:after,
 .ship-fuel.fuel-0:after {
-  background: url("../img/fuel_barrel_red.svg") no-repeat;
+  background: url("../assets/img/fuel_barrel_red.svg") no-repeat;
   background-position-y: bottom;
   background-position-x: right;
   background-size: contain;
 }
 
 .ship-ammo.ammo-100 {
-  background: url("../img/shell.svg") no-repeat;
+  background: url("../assets/img/shell.svg") no-repeat;
   background-size: contain;
   background-position-y: 50%;
 }
 
 .ship-ammo.ammo-80,
 .ship-ammo.ammo-60 {
-  background: url("../img/shell_grey.svg") no-repeat;
+  background: url("../assets/img/shell_grey.svg") no-repeat;
   background-size: contain;
   background-position-y: 50%;
 }
 
 .ship-ammo.ammo-40,
 .ship-ammo.ammo-20 {
-  background: url("../img/shell_red.svg") no-repeat;
+  background: url("../assets/img/shell_red.svg") no-repeat;
   background-size: contain;
   background-position-y: 50%;
 }
@@ -624,21 +624,21 @@ html {
   width: 100%;
   height: 100%;
   left: 0;
-  background: url("../img/shell.svg") no-repeat;
+  background: url("../assets/img/shell.svg") no-repeat;
   background-position-y: bottom;
   background-size: contain;
 }
 
 .ship-ammo.ammo-60:after,
 .ship-ammo.ammo-40:after {
-  background: url("../img/shell_grey.svg") no-repeat;
+  background: url("../assets/img/shell_grey.svg") no-repeat;
   background-position-y: bottom;
   background-size: contain;
 }
 
 .ship-ammo.ammo-20:after,
 .ship-ammo.ammo-0:after {
-  background: url("../img/shell_red.svg") no-repeat;
+  background: url("../assets/img/shell_red.svg") no-repeat;
   background-position-y: bottom;
   background-size: contain;
 }
@@ -708,5 +708,5 @@ html {
 
 #panel-options .mute {
   background-size: cover;
-  background: var(--background) url("../img/Speaker.svg") no-repeat 50% 50%;
+  background: var(--background) url("../assets/img/Speaker.svg") no-repeat 50% 50%;
 }

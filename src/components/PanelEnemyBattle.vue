@@ -2,7 +2,7 @@
     <div class="enemy enemy-main" :class="extraHPClasses">
         <div class="enemyIcon" :style="styleIcon"></div>
         <div class="ship-hp" :class="extraHPClasses" :title="enemy.hp.now+'/'+enemy.hp.max +'   ' + Math.floor(enemy.hp.now/enemy.hp.max*100)+'%'">
-            <div v-for="n in hpBarCount" class="hp-block"></div>
+            <div v-for="n in hpBarCount" class="hp-block" :key="n"></div>
         </div>
     </div>
 </template>
@@ -14,8 +14,8 @@
         computed: {
             enemyImagePath() {
                 if (this.enemy.masterId)
-                    return `./img/ships/${this.enemy.masterId}.png`;
-                return `./img/abyss/${this.enemy.id}.png`;
+                    return require(`../assets/img/ships/${this.enemy.masterId}.png`);
+                return require(`../assets/img/abyss/${this.enemy.id}.png`);
             },
             styleIcon() {
                 return `--icon-path: url('${this.enemyImagePath}');`;

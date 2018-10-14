@@ -2,7 +2,7 @@
     <div class="ship ship-main" :class="extraIconClasses">
         <div class="shipIcon" :style="styleIcon"></div>
         <div class="ship-hp" :class="extraHPClasses" :title="ship.hp.now+'/'+ship.hp.max+'  lost '+ship.hp.lost+' hp'">
-            <div v-for="n in hpBarCount" class="hp-block"></div><div v-for="n in hpLostBarCount" class="hp-block hp-block-lost"></div>
+            <div v-for="n in hpBarCount" class="hp-block" :key="'c'+n"></div><div v-for="n in hpLostBarCount" class="hp-block hp-block-lost" :key="'l'+n"></div>
         </div>
         <div class="status-box">
             <div class="ship-morale" :class="moraleClass" :title="ship.morale"></div>
@@ -20,7 +20,7 @@
         props: ['ship'],
         computed: {
             shipImagePath() {
-                return `./img/ships/${this.ship.masterId}.png`;
+                return require(`../assets/img/ships/${this.ship.masterId}.png`);
             },
             styleIcon() {
                 return `--icon-path: url('${this.shipImagePath}');`;
