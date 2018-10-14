@@ -4,7 +4,10 @@
   "description": "[https://dynamicstop.github.io/KC3-panel-redesign/](https://dynamicstop.github.io/KC3-panel-redesign/)",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
   "repository": {
     "type": "git",
@@ -17,7 +20,16 @@
   },
   "homepage": "https://github.com/DynamicSTOP/KC3-panel-redesign#readme",
   "dependencies": {
+    "vue": "^2.5.17",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
     "@vue/cli": "^3.0.5",
-    "@vue/cli-service": "^3.0.5"
+    "@vue/cli-plugin-babel": "^3.0.5",
+    "@vue/cli-plugin-eslint": "^3.0.5",
+    "@vue/cli-service": "^3.0.5",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "vue-template-compiler": "^2.5.17"
   }
 }
