@@ -9,8 +9,6 @@
 </template>
 
 <script>
-    import {mapGetters} from 'vuex';
-
     export default {
         name: 'PanelEnemyBattle',
         props: ['enemy'],
