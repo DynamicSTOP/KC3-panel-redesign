@@ -1,5 +1,5 @@
 *.iml
-img/background-custom.jpg
+public/background-custom.jpg
 .env
 tmp
 

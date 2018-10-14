@@ -1,18 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div id="panel">
+      <panel-header :storage="storage" :slots="slots" :commander="commander"></panel-header>
+      <panel-main :fleets="fleets" :enemies="enemies" :current_main_panel="current_main_panel"></panel-main>
+      <div id="panel-help"></div>
+    </div>
+    <div id="twitter"><a href="https://twitter.com/tsekino0530" rel="noopener" target="_blank">https://twitter.com/tsekino0530</a>
+    </div>
+    <panel-options :options="options"></panel-options>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PanelHeader from '@/components/PanelHeader'
+import PanelOptions from '@/components/PanelOptions'
+import PanelMain from '@/components/PanelMain'
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
-  }
+  components: {PanelHeader,PanelMain,PanelOptions}
 }
 </script>
 
