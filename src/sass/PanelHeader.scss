@@ -1,0 +1,159 @@
+
+#panel-top {
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  height: 10%;
+  /* background: rgba(255, 120, 0, 0.3); */
+  font-weight: 800;
+  text-align: left;
+
+  #panel-top-player, #panel-top-stats {
+    display: inline-block;
+    float: left;
+    margin: 10px;
+  }
+
+  #panel-top-teitoku {
+    line-height: 20px;
+    font-size: 20px;
+    color: #715900;
+    min-width: 220px;
+  }
+
+  #panel-top-teitoku-rank {
+    margin-right: 10px;
+    text-transform: capitalize;
+  }
+
+  #panel-top-teitoku-name {
+    color: black;
+    cursor: pointer;
+    float: right;
+    &.censor {
+      color: transparent;
+      text-shadow: 0 0 10px rgba(139, 139, 139, 0.4);
+    }
+  }
+
+  #panel-top-hq {
+    padding: 2px;
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient);
+      top: 0;
+      left: 0;
+    }
+  }
+
+  #panel-top-hq-points {
+    float: right;
+  }
+
+  #panel-top-comment {
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  #panel-top-stats {
+    float: right;
+  }
+
+  #stats-tl-ships {
+    position: relative;
+    margin-left: 20px;
+    margin-right: 20px;
+    &:before {
+      position: absolute;
+      background: url("../assets/img/ship.png") no-repeat;
+      content: " ";
+      top: 0;
+      left: -20px;
+      width: 19px;
+      height: 19px;
+      background-position: center;
+    }
+  }
+
+  #stats-tl-equip {
+    position: relative;
+    margin-left: 20px;
+    margin-right: 20px;
+    &:before {
+      position: absolute;
+      background: url("../assets/img/gear.png") no-repeat;
+      content: " ";
+      top: 0;
+      left: -20px;
+      width: 19px;
+      height: 19px;
+      background-position: center;
+    }
+  }
+
+  #stats-tl-buck {
+    position: relative;
+    margin-left: 20px;
+    &:before {
+      position: absolute;
+      background: url("../assets/img/bucket.png") no-repeat;
+      content: " ";
+      top: 0;
+      left: -20px;
+      width: 19px;
+      height: 19px;
+      background-position: center;
+    }
+  }
+
+  #panel-top-stats-stock {
+    margin-top: 10px;
+    > span {
+      float: right;
+      width: 35%;
+      text-align: right;
+    }
+  }
+
+  #stats-tl-fuel,
+  #stats-tl-steel,
+  #stats-tl-ammo,
+  #stats-tl-baux {
+    position: relative;
+  }
+
+  #stats-tl-fuel:before,
+  #stats-tl-steel:before,
+  #stats-tl-ammo:before,
+  #stats-tl-baux:before {
+    position: absolute;
+    content: " ";
+    top: 0;
+    left: 10px;
+    width: 18px;
+    height: 18px;
+    background-position: center;
+    background-size: cover;
+  }
+
+  #stats-tl-fuel:before {
+    background: url("../assets/img/fuel.png") no-repeat;
+  }
+
+  #stats-tl-steel:before {
+    background: url("../assets/img/steel.png") no-repeat;
+  }
+
+  #stats-tl-ammo:before {
+    background: url("../assets/img/ammo.png") no-repeat;
+  }
+
+  #stats-tl-baux:before {
+    background: url("../assets/img/bauxite.png") no-repeat;
+  }
+}
