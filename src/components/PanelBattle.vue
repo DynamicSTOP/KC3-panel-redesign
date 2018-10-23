@@ -2,19 +2,21 @@
     <div id="panel-main-battle">
         <div>
             <div id="panel-main-left">
-                <div class="ships">
-                    <panel-ship-battle v-for="ship in fleets[0]"
-                                       :ship="ship"
+                <div class="units">
+                    <panel-unit-battle v-for="ship in fleets[0]"
+                                       :unit="ship"
+                                       :side="'ally'"
                                        :key="ship.id">
-                    </panel-ship-battle>
+                    </panel-unit-battle>
                 </div>
             </div>
             <div id="panel-main-right">
-                <div class="enemies">
-                    <panel-enemy-battle v-for="(enemy, index) in enemies"
-                                        :enemy="enemy"
-                                        :key="index">
-                    </panel-enemy-battle>
+                <div class="units">
+                    <panel-unit-battle v-for="(enemy, index) in enemies"
+                                        :unit="enemy"
+                                        :side="'enemy'"
+                                        :key="'e'+index">
+                    </panel-unit-battle>
                 </div>
             </div>
         </div>
@@ -22,8 +24,7 @@
 </template>
 
 <script>
-    import PanelShipBattle from '@/components/PanelShipBattle.vue';
-    import PanelEnemyBattle from '@/components/PanelEnemyBattle.vue';
+    import PanelUnitBattle from '@/components/PanelUnitBattle.vue';
     import {mapGetters} from 'vuex'
 
     export default {
@@ -31,6 +32,6 @@
         computed: {
             ...mapGetters(['currentMainTab', 'fleets', 'enemies'])
         },
-        components: {PanelEnemyBattle, PanelShipBattle}
+        components: {PanelUnitBattle}
     }
 </script>
