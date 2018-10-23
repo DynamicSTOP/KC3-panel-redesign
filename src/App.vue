@@ -7,18 +7,18 @@
         </div>
         <div id="twitter"><a href="https://twitter.com/tsekino0530" rel="noopener" target="_blank">https://twitter.com/tsekino0530</a>
         </div>
-        <panel-options></panel-options>
+        <panel-side></panel-side>
     </div>
 </template>
 
 <script>
     import PanelHeader from '@/components/PanelHeader'
-    import PanelOptions from '@/components/PanelOptions'
+    import PanelSide from '@/components/PanelSide'
     import PanelMain from '@/components/PanelMain'
     import '@/sass/main.scss'
 
     export default {
         name: 'box',
-        components: {PanelHeader, PanelMain, PanelOptions}
+        components: {PanelHeader, PanelMain, PanelSide}
     }
 </script>

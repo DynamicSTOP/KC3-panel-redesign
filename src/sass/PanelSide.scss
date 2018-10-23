@@ -29,10 +29,13 @@
   > div:last-child {
     border-bottom-left-radius: calc(var(--option-size) / 4);
   }
-
   .mute {
-    background-size: cover;
     background: var(--background) url("../assets/img/Speaker.svg") no-repeat 50% 50%;
+    background-size:80%;
+  }
+  .optionsPopup{
+    background: var(--background) url("../assets/img/Gears.svg") no-repeat 50% 50%;
+    background-size:80%;
   }
 
   &.hidden {

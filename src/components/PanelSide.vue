@@ -2,6 +2,7 @@
     <div id="panel-options" :class="{hidden:hidden}">
         <div class="switch" v-on:click="hidden=!hidden">{{ hidden ? "&lt;" : "&gt;" }}</div>
         <div class="mute"></div>
+        <div class="optionsPopup"></div>
     </div>
 </template>
 
@@ -9,7 +10,7 @@
     import {mapGetters} from 'vuex';
 
     export default {
-        name: 'PanelOptions',
+        name: 'PanelSide',
         computed: {
             ...mapGetters(['options'])
         },
