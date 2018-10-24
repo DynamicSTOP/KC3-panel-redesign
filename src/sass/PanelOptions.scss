@@ -6,6 +6,14 @@
   position: relative;
   box-sizing: border-box;
   overflow-y: scroll;
+  font-family: 'Roboto', sans-serif;
+
+  > section {
+    margin-top: 20px;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
 
   &::-webkit-scrollbar {
     width: 5px;
@@ -20,18 +28,20 @@
   &.hidden {
     display: none;
   }
+  .head {
+    font-size: 26px;
+    line-height: 26px;
+    font-weight: 800;
+  }
 
   .title {
-    font-family: 'Roboto', sans-serif;
     font-size: 20px;
-    line-height:20px;
+    line-height: 20px;
+    margin-bottom: 5px;
     padding-left: 15px;
     text-align: left;
     position: relative;
-    &.head{
-      font-size:26px;
-      line-height:26px;
-    }
+    font-weight: 800;
     &:after {
       content: " ";
       position: absolute;
@@ -56,5 +66,34 @@
     background: white;
     border-radius: 50%;
     vertical-align: middle;
+  }
+
+  .options {
+    display: table;
+    width: 100%;
+    .panel-option {
+      width: 100%;
+      display: table-row;
+      &:nth-child(2n+1) {
+        background: #eee;
+      }
+      .option-name, .option-box {
+        padding: 5px;
+        display: table-cell;
+        text-align: left;
+      }
+      .option-name {
+        padding-left: 20px;
+        font-weight: 600;
+        table-layout: fixed;
+        width: 40%;
+      }
+      .option-box {
+        input[type='text'] {
+          width: 90%;
+          padding: 5px;
+        }
+      }
+    }
   }
 }

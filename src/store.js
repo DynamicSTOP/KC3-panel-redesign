@@ -138,11 +138,16 @@ fleets.map((f) => f.map((ship) => {
     ship.ammo = [(Math.ceil(Math.random() * 30)), 30]
 }));
 
-let options = {
-    isPanelVisible: false,
+let options = {};
+try{
+    let obj = JSON.parse(localStorage.getItem("kc3_panel_v2_options"));
+    Object.assign(options, obj);
+}catch(e){}
+
+let status = {
+    isOptionsPanelVisible: false,
     mute: false
 };
-
 
 export default new Vuex.Store({
     state: {
@@ -152,7 +157,8 @@ export default new Vuex.Store({
         slots,
         fleets,
         options,
-        enemies
+        enemies,
+        status
     },
     getters: {
         currentMainTab: state => state.currentMainTab,
@@ -161,7 +167,7 @@ export default new Vuex.Store({
         slots: state => state.slots,
         fleets: state => state.fleets,
         options: state => state.options,
-        optionsPanelVisible: state => state.options.isPanelVisible,
+        isOptionsPanelVisible: state => state.status.isOptionsPanelVisible,
         enemies: state => state.enemies
     },
     mutations: {
@@ -169,7 +175,11 @@ export default new Vuex.Store({
             state.currentMainTab = tabName;
         },
         toggleOptionsPanel(state) {
-            state.options.isPanelVisible = !state.options.isPanelVisible;
+            state.status.isOptionsPanelVisible = !state.status.isOptionsPanelVisible;
+        },
+        optionChanged(state, data) {
+            state.options[data.id] = data.value;
+            localStorage.setItem("kc3_panel_v2_options",JSON.stringify(state.options));
         }
     },
     actions: {}

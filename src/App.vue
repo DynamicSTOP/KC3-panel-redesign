@@ -1,6 +1,6 @@
 <template>
     <div id="box">
-        <div id="panel" :class="{hidden:optionsPanelVisible}">
+        <div id="panel" :class="{hidden:isOptionsPanelVisible}">
             <panel-header></panel-header>
             <panel-main></panel-main>
             <div id="panel-help"></div>
@@ -8,7 +8,7 @@
         <div id="twitter"><a href="https://twitter.com/tsekino0530" rel="noopener" target="_blank">https://twitter.com/tsekino0530</a>
         </div>
         <panel-side></panel-side>
-        <panel-options :class="{hidden:!optionsPanelVisible}"></panel-options>
+        <panel-options :class="{hidden:!isOptionsPanelVisible}"></panel-options>
     </div>
 </template>
 
@@ -24,7 +24,7 @@
     export default {
         name: 'box',
         computed: {
-            ...mapGetters(['optionsPanelVisible'])
+            ...mapGetters(['isOptionsPanelVisible'])
         },
         components: {PanelHeader, PanelMain, PanelSide, PanelOptions}
     }
