@@ -1,8 +1,8 @@
 <template>
-    <div id="panel-options" :class="{hidden:hidden}">
-        <div class="switch" v-on:click="hidden=!hidden">{{ hidden ? "&lt;" : "&gt;" }}</div>
+    <div id="panel-side" :class="{hidden:hidden}">
+        <div class="switch" @click="toggle">{{ hidden ? "&lt;" : "&gt;" }}</div>
         <div class="mute"></div>
-        <div class="optionsPopup"></div>
+        <div class="optionsPopup" @click="toggleOptions"></div>
     </div>
 </template>
 
@@ -13,6 +13,15 @@
         name: 'PanelSide',
         computed: {
             ...mapGetters(['options'])
+        },
+        methods: {
+            toggle(){
+                this.hidden = !this.hidden;
+            },
+            toggleOptions() {
+                this.toggle();
+                this.$store.commit('toggleOptionsPanel');
+            }
         },
         data: function () {
             return {hidden: true};

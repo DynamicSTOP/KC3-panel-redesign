@@ -139,6 +139,7 @@ fleets.map((f) => f.map((ship) => {
 }));
 
 let options = {
+    isPanelVisible: false,
     mute: false
 };
 
@@ -160,11 +161,15 @@ export default new Vuex.Store({
         slots: state => state.slots,
         fleets: state => state.fleets,
         options: state => state.options,
+        optionsPanelVisible: state => state.options.isPanelVisible,
         enemies: state => state.enemies
     },
     mutations: {
         switchMainTab(state, tabName) {
             state.currentMainTab = tabName;
+        },
+        toggleOptionsPanel(state) {
+            state.options.isPanelVisible = !state.options.isPanelVisible;
         }
     },
     actions: {}
