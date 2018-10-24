@@ -1,6 +1,14 @@
-[https://dynamicstop.github.io/KC3-panel-redesign/](https://dynamicstop.github.io/KC3-panel-redesign/)
+[KC3-panel-redesign](https://dynamicstop.github.io/KC3-panel-redesign/)
 
 # kc-panel
+
+###roadmap
+
+1. options skeleton
+
+2. path for images from outside
+
+3. skeleton for panel-helper sections 
 
 ## Project setup
 ```
