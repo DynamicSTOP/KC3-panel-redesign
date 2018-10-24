@@ -1,0 +1,60 @@
+#panel-options {
+  --padding-side: 20px;
+  background: #ccc;
+  height: 100%;
+  padding: var(--padding-side);
+  position: relative;
+  box-sizing: border-box;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #ddd;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #666;
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  .title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    line-height:20px;
+    padding-left: 15px;
+    text-align: left;
+    position: relative;
+    &.head{
+      font-size:26px;
+      line-height:26px;
+    }
+    &:after {
+      content: " ";
+      position: absolute;
+      width: 75%;
+      height: 2px;
+      bottom: 0;
+      left: calc(0px - var(--padding-side));
+      background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #fff 5%, #fff 50%, rgba(255, 255, 255, 0.5) 70%, rgba(255, 255, 255, 0) 100%);
+    }
+  }
+  .close-options:after {
+    position: absolute;
+    cursor: pointer;
+    top: 20px;
+    right: 20px;
+    content: "×";
+    font-size: 18px;
+    line-height: 20px;
+    color: black;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+}
